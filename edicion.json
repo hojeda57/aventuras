@@ -1,0 +1,16 @@
+{
+  "edicion": "familiar",
+  "marca": {
+    "nombre": "Las Aventuras de Loana",
+    "corto": "Aventuras",
+    "archivo": "AventurasDeLoana",
+    "editor": "Horacio",
+    "email": "",
+    "sitio": "",
+    "privacidad": ""
+  },
+  "gratis": [
+    "lectura",
+    "mate"
+  ]
+}

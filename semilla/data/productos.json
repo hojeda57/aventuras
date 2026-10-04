@@ -1,0 +1,102 @@
+[
+  {
+    "id": "k1",
+    "nombre": "Alfajor",
+    "emoji": "🍫"
+  },
+  {
+    "id": "k2",
+    "nombre": "Caramelos",
+    "emoji": "🍬"
+  },
+  {
+    "id": "k3",
+    "nombre": "Chupetín",
+    "emoji": "🍭"
+  },
+  {
+    "id": "k4",
+    "nombre": "Galletitas",
+    "emoji": "🍪"
+  },
+  {
+    "id": "k5",
+    "nombre": "Jugo",
+    "emoji": "🧃"
+  },
+  {
+    "id": "k6",
+    "nombre": "Gaseosa",
+    "emoji": "🥤"
+  },
+  {
+    "id": "k7",
+    "nombre": "Helado",
+    "emoji": "🍦"
+  },
+  {
+    "id": "k8",
+    "nombre": "Pan",
+    "emoji": "🥖"
+  },
+  {
+    "id": "k9",
+    "nombre": "Leche",
+    "emoji": "🥛"
+  },
+  {
+    "id": "k10",
+    "nombre": "Banana",
+    "emoji": "🍌"
+  },
+  {
+    "id": "k11",
+    "nombre": "Manzana",
+    "emoji": "🍎"
+  },
+  {
+    "id": "k12",
+    "nombre": "Figuritas",
+    "emoji": "🃏"
+  },
+  {
+    "id": "k13",
+    "nombre": "Pelota",
+    "emoji": "⚽"
+  },
+  {
+    "id": "k14",
+    "nombre": "Lápiz",
+    "emoji": "✏️"
+  },
+  {
+    "id": "k15",
+    "nombre": "Cuaderno",
+    "emoji": "📒"
+  },
+  {
+    "id": "k16",
+    "nombre": "Queso",
+    "emoji": "🧀"
+  },
+  {
+    "id": "k17",
+    "nombre": "Huevos",
+    "emoji": "🥚"
+  },
+  {
+    "id": "k18",
+    "nombre": "Papas fritas",
+    "emoji": "🍟"
+  },
+  {
+    "id": "k19",
+    "nombre": "Medialunas",
+    "emoji": "🥐"
+  },
+  {
+    "id": "k20",
+    "nombre": "Agua",
+    "emoji": "💧"
+  }
+]

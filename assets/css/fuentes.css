@@ -1,0 +1,10 @@
+/* Fuentes locales: la app funciona aunque el servidor no tenga internet */
+@font-face { font-family: "Quicksand"; font-weight: 500; font-display: swap; src: url("../fonts/quicksand-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Quicksand"; font-weight: 600; font-display: swap; src: url("../fonts/quicksand-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Quicksand"; font-weight: 700; font-display: swap; src: url("../fonts/quicksand-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Material Symbols Outlined"; font-style: normal; font-weight: 100 700; font-display: block;
+  src: url("../fonts/material-symbols-outlined.woff2") format("woff2"); }
+.material-symbols-outlined { font-family: "Material Symbols Outlined"; font-weight: normal; font-style: normal; font-size: 24px;
+  line-height: 1; letter-spacing: normal; text-transform: none; display: inline-block; white-space: nowrap;
+  word-wrap: normal; direction: ltr; -webkit-font-feature-settings: "liga"; font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased; overflow: hidden; }

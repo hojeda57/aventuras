@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f59e0b">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="icon" href="../assets/img/iconos/icono-192.png">
+  <link rel="apple-touch-icon" href="../assets/img/iconos/apple-touch-icon.png">
+  <title>Contenidos de matemáticas</title>
+  <link rel="stylesheet" href="../assets/css/fuentes.css">
+  <link rel="stylesheet" href="../assets/css/tailwind.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <script type="module" src="../assets/js/pages/padres-matematicas.js"></script>
+</head>
+<body class="bg-surface font-body-md text-body-md text-on-surface min-h-screen">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] bg-surface-container-lowest px-4 py-2 rounded-full">Saltar al contenido</a>
+  <div id="app-header"></div>
+
+  <main id="main" class="w-full pt-28">
+    <div class="max-w-[1200px] mx-auto px-margin-mobile sm:px-margin pb-space-xl space-y-space-lg">
+
+      <!-- Encabezado -->
+      <section class="mt-space-md bg-surface-container rounded-lg p-space-lg shadow-sm relative overflow-hidden flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-md">
+        <div class="absolute -right-12 -top-12 w-64 h-64 bg-secondary-container/20 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="relative flex items-center gap-space-md">
+          <div class="w-16 h-16 rounded-lg bg-surface-container-lowest flex items-center justify-center shadow-sm text-secondary">
+            <span class="material-symbols-outlined icon-fill text-[36px]">calculate</span>
+          </div>
+          <div>
+            <h1 class="font-headline-md text-headline-md">Aventuras con números para <span class="js-nombre"></span></h1>
+            <p class="text-on-surface-variant mt-0.5">Armá los retos de cálculo y elegí los objetos que va a tocar para contar.</p>
+          </div>
+        </div>
+        <div class="relative flex flex-wrap items-center gap-space-sm">
+          <div class="flex items-center gap-3 px-4 py-2 bg-surface-container-lowest rounded-full shadow-sm">
+            <span class="material-symbols-outlined text-tertiary text-[20px]">auto_awesome</span>
+            <label for="toggleAdaptativa" class="flex flex-col cursor-pointer">
+              <span class="font-label-sm text-label-sm">Dificultad adaptativa</span>
+              <span id="adaptativaTexto" class="font-label-sm text-label-sm text-tertiary font-bold"></span>
+            </label>
+            <button id="toggleAdaptativa" type="button" role="switch" aria-checked="false" class="w-11 h-6 rounded-full relative p-0.5 flex items-center transition-colors">
+              <span class="w-5 h-5 bg-white rounded-full shadow-md transition-transform"></span>
+            </button>
+          </div>
+          <div class="flex items-center gap-3 px-4 py-2 bg-surface-container-lowest rounded-full shadow-sm">
+            <span class="material-symbols-outlined text-primary text-[20px]">flag</span>
+            <div class="flex flex-col">
+              <span class="font-label-sm text-label-sm">Meta diaria</span>
+              <span id="metaTexto" class="font-label-sm text-label-sm text-primary font-bold"></span>
+            </div>
+            <span id="metaHoy" class="font-label-sm text-label-sm px-2 py-0.5 bg-primary-fixed text-on-primary-fixed rounded-full"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Métricas -->
+      <section id="estadisticas" class="grid grid-cols-1 md:grid-cols-3 gap-space-md" aria-label="Progreso"></section>
+
+      <!-- Categorías -->
+      <div id="tabs" role="group" aria-label="Categorías" class="flex items-center gap-2 p-1.5 bg-surface-container-low rounded-full overflow-x-auto no-scrollbar"></div>
+
+      <!-- Barra de acciones -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-md">
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="font-label-sm text-label-sm text-on-surface-variant">Nivel:</span>
+          <div id="filtroNivel" role="group" aria-label="Filtrar por nivel" class="flex items-center gap-1 bg-surface-container-high p-1 rounded-full flex-wrap"></div>
+        </div>
+        <div class="flex items-center gap-2 flex-wrap">
+          <button id="btnPaquete" type="button" class="inline-flex items-center gap-2 px-4 min-h-[44px] bg-surface-container-lowest rounded-full font-label-md text-label-md shadow-sm hover:bg-surface-container-high">
+            <span class="material-symbols-outlined text-[18px] text-primary">bolt</span>Cargar 5 sumas del 1 al 10
+          </button>
+          <button id="btnNuevo" type="button" class="btn-tactil inline-flex items-center gap-2 px-5 min-h-[44px] bg-secondary text-on-secondary rounded-full font-label-lg text-label-lg shadow-[0_3px_0_0_#004c6e] hover:bg-secondary-container hover:text-on-secondary-container">
+            <span class="material-symbols-outlined text-[20px]">add_circle</span>Crear ejercicio
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+        <!-- Ruta activa -->
+        <section class="lg:col-span-7 space-y-space-md" aria-labelledby="tituloRuta">
+          <div class="flex items-center justify-between">
+            <div>
+              <h2 id="tituloRuta" class="font-headline-sm text-headline-sm">Ejercicios en la ruta</h2>
+              <p id="contadorRuta" class="font-body-sm text-body-sm text-on-surface-variant"></p>
+            </div>
+            <button id="btnReordenar" type="button" class="text-secondary font-label-sm text-label-sm flex items-center gap-1 hover:underline">
+              <span class="material-symbols-outlined text-[16px]">swap_vert</span><span>Reordenar</span>
+            </button>
+          </div>
+          <div id="lista" class="space-y-space-md"></div>
+          <p id="vacio" class="hidden text-center p-space-xl bg-surface-container-low rounded-lg text-on-surface-variant">No hay ejercicios en esta categoría. Creá uno con el constructor.</p>
+        </section>
+
+        <!-- Constructor -->
+        <aside id="constructor" class="lg:col-span-5 lg:sticky lg:top-32">
+          <form id="constructorForm" novalidate class="bg-surface-container-lowest rounded-lg p-space-lg shadow-md space-y-space-md">
+            <div class="flex items-center justify-between border-b pb-space-sm border-surface-container-high">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary text-[24px]">construction</span>
+                <div>
+                  <h2 id="constructorTitulo" class="font-headline-sm text-headline-sm">Constructor de retos</h2>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">Un problema en 4 pasos</p>
+                </div>
+              </div>
+              <button type="button" id="btnCancelar" class="hidden font-label-sm text-label-sm text-on-surface-variant hover:underline">Cancelar edición</button>
+            </div>
+
+            <fieldset class="space-y-2">
+              <legend class="font-label-md text-label-md">1. ¿Qué operación es?</legend>
+              <div id="opGrupo" class="grid grid-cols-3 gap-2"></div>
+            </fieldset>
+
+            <fieldset class="space-y-2">
+              <legend class="font-label-md text-label-md">2. Elegí los números</legend>
+              <div class="bg-surface-container-low p-3 rounded flex items-center justify-around gap-2">
+                <div id="numeros" class="contents"></div>
+              </div>
+              <p id="numerosAviso" class="font-body-sm text-body-sm text-on-surface-variant min-h-[20px]" aria-live="polite"></p>
+            </fieldset>
+
+            <fieldset class="space-y-2">
+              <legend class="font-label-md text-label-md">3. ¿Qué objetos va a tocar para contar?</legend>
+              <div id="objetosGrupo" class="grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-4 xl:grid-cols-8 gap-2"></div>
+            </fieldset>
+
+            <fieldset class="space-y-2">
+              <legend class="font-label-md text-label-md">4. Festejo al acertar</legend>
+              <div id="celebracionGrupo" class="grid grid-cols-3 gap-2"></div>
+              <div class="flex items-center justify-between pt-1">
+                <span class="font-label-sm text-label-sm text-on-surface-variant">Puntos que gana:</span>
+                <div id="puntosGrupo" class="flex items-center gap-1"></div>
+              </div>
+            </fieldset>
+
+            <div class="space-y-2">
+              <label for="enunciadoInput" class="font-label-md text-label-md">Historia del problema <span class="font-body-sm text-on-surface-variant">(opcional)</span></label>
+              <textarea id="enunciadoInput" rows="2" placeholder="Ej: {nombre} tiene 2 galletas y mamá le da 3 más. ¿Cuántas tiene?"
+                class="w-full p-space-sm rounded bg-surface-container-low focus:outline-none focus:ring-2 focus:ring-tertiary"></textarea>
+            </div>
+
+            <div class="p-3 bg-surface-container-low rounded space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-label-sm text-label-sm font-bold flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-[16px] text-primary">mic</span>Mensaje de voz al acertar
+                </span>
+                <span id="vozEstado" class="font-label-sm text-label-sm text-on-surface-variant">Sin grabar</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button type="button" id="btnOirVoz" class="hidden inline-flex items-center gap-1 px-3 min-h-[36px] bg-surface-container-lowest rounded-full font-label-sm text-label-sm hover:bg-surface-container-high">
+                  <span class="material-symbols-outlined text-[16px] text-secondary">play_arrow</span>Escuchar
+                </button>
+                <button type="button" id="btnGrabar" class="inline-flex items-center gap-1 px-3 min-h-[36px] bg-surface-container-lowest text-error rounded-full font-label-sm text-label-sm hover:bg-error-container">
+                  <span class="material-symbols-outlined text-[16px]">mic</span><span id="grabarLabel">Grabar</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-stretch gap-2 pt-2">
+              <button type="submit" id="btnGuardar" class="btn-tactil flex-1 py-3 px-4 bg-tertiary text-on-tertiary rounded-full font-label-lg text-label-lg shadow-[0_3px_0_0_#004e34] hover:bg-tertiary-container hover:text-on-tertiary-container">Guardar ejercicio</button>
+              <button type="button" id="btnGuardarOtro" class="py-3 px-4 bg-surface-container rounded-full font-label-md text-label-md hover:bg-surface-container-high whitespace-nowrap">Guardar y crear otro</button>
+            </div>
+          </form>
+        </aside>
+      </div>
+
+      <section class="bg-surface-container-low rounded-lg p-space-md flex flex-col md:flex-row items-center gap-space-md">
+        <div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-secondary text-[24px]">school</span>
+        </div>
+        <div>
+          <h3 class="font-headline-sm text-headline-sm">¿Cómo aprende mejor a esta edad?</h3>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">A los 6 años, tocar y mover objetos ayuda mucho antes de pasar a los números solos. Mantené las sumas por debajo de 10 objetos hasta que las resuelva con seguridad.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="app-footer"></div>
+</body>
+</html>

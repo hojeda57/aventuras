@@ -1,0 +1,555 @@
+[
+  {
+    "id": "col-red",
+    "categoria": "colores",
+    "en": "red",
+    "es": "rojo",
+    "emoji": null,
+    "color": "#e53935"
+  },
+  {
+    "id": "col-blue",
+    "categoria": "colores",
+    "en": "blue",
+    "es": "azul",
+    "emoji": null,
+    "color": "#1e88e5"
+  },
+  {
+    "id": "col-green",
+    "categoria": "colores",
+    "en": "green",
+    "es": "verde",
+    "emoji": null,
+    "color": "#43a047"
+  },
+  {
+    "id": "col-yellow",
+    "categoria": "colores",
+    "en": "yellow",
+    "es": "amarillo",
+    "emoji": null,
+    "color": "#fdd835"
+  },
+  {
+    "id": "col-orange",
+    "categoria": "colores",
+    "en": "orange",
+    "es": "naranja",
+    "emoji": null,
+    "color": "#fb8c00"
+  },
+  {
+    "id": "col-purple",
+    "categoria": "colores",
+    "en": "purple",
+    "es": "violeta",
+    "emoji": null,
+    "color": "#8e24aa"
+  },
+  {
+    "id": "col-pink",
+    "categoria": "colores",
+    "en": "pink",
+    "es": "rosa",
+    "emoji": null,
+    "color": "#f48fb1"
+  },
+  {
+    "id": "col-black",
+    "categoria": "colores",
+    "en": "black",
+    "es": "negro",
+    "emoji": null,
+    "color": "#212121"
+  },
+  {
+    "id": "col-white",
+    "categoria": "colores",
+    "en": "white",
+    "es": "blanco",
+    "emoji": null,
+    "color": "#ffffff"
+  },
+  {
+    "id": "col-brown",
+    "categoria": "colores",
+    "en": "brown",
+    "es": "marrón",
+    "emoji": null,
+    "color": "#6d4c41"
+  },
+  {
+    "id": "num-one",
+    "categoria": "numeros",
+    "en": "one",
+    "es": "uno",
+    "emoji": null,
+    "color": null,
+    "orden": 1
+  },
+  {
+    "id": "num-two",
+    "categoria": "numeros",
+    "en": "two",
+    "es": "dos",
+    "emoji": null,
+    "color": null,
+    "orden": 2
+  },
+  {
+    "id": "num-three",
+    "categoria": "numeros",
+    "en": "three",
+    "es": "tres",
+    "emoji": null,
+    "color": null,
+    "orden": 3
+  },
+  {
+    "id": "num-four",
+    "categoria": "numeros",
+    "en": "four",
+    "es": "cuatro",
+    "emoji": null,
+    "color": null,
+    "orden": 4
+  },
+  {
+    "id": "num-five",
+    "categoria": "numeros",
+    "en": "five",
+    "es": "cinco",
+    "emoji": null,
+    "color": null,
+    "orden": 5
+  },
+  {
+    "id": "num-six",
+    "categoria": "numeros",
+    "en": "six",
+    "es": "seis",
+    "emoji": null,
+    "color": null,
+    "orden": 6
+  },
+  {
+    "id": "num-seven",
+    "categoria": "numeros",
+    "en": "seven",
+    "es": "siete",
+    "emoji": null,
+    "color": null,
+    "orden": 7
+  },
+  {
+    "id": "num-eight",
+    "categoria": "numeros",
+    "en": "eight",
+    "es": "ocho",
+    "emoji": null,
+    "color": null,
+    "orden": 8
+  },
+  {
+    "id": "num-nine",
+    "categoria": "numeros",
+    "en": "nine",
+    "es": "nueve",
+    "emoji": null,
+    "color": null,
+    "orden": 9
+  },
+  {
+    "id": "num-ten",
+    "categoria": "numeros",
+    "en": "ten",
+    "es": "diez",
+    "emoji": null,
+    "color": null,
+    "orden": 10
+  },
+  {
+    "id": "ani-dog",
+    "categoria": "animales",
+    "en": "dog",
+    "es": "perro",
+    "emoji": "🐶",
+    "color": null
+  },
+  {
+    "id": "ani-cat",
+    "categoria": "animales",
+    "en": "cat",
+    "es": "gato",
+    "emoji": "🐱",
+    "color": null
+  },
+  {
+    "id": "ani-fish",
+    "categoria": "animales",
+    "en": "fish",
+    "es": "pez",
+    "emoji": "🐟",
+    "color": null
+  },
+  {
+    "id": "ani-bird",
+    "categoria": "animales",
+    "en": "bird",
+    "es": "pájaro",
+    "emoji": "🐦",
+    "color": null
+  },
+  {
+    "id": "ani-lion",
+    "categoria": "animales",
+    "en": "lion",
+    "es": "león",
+    "emoji": "🦁",
+    "color": null
+  },
+  {
+    "id": "ani-elephant",
+    "categoria": "animales",
+    "en": "elephant",
+    "es": "elefante",
+    "emoji": "🐘",
+    "color": null
+  },
+  {
+    "id": "ani-monkey",
+    "categoria": "animales",
+    "en": "monkey",
+    "es": "mono",
+    "emoji": "🐒",
+    "color": null
+  },
+  {
+    "id": "ani-giraffe",
+    "categoria": "animales",
+    "en": "giraffe",
+    "es": "jirafa",
+    "emoji": "🦒",
+    "color": null
+  },
+  {
+    "id": "ani-zebra",
+    "categoria": "animales",
+    "en": "zebra",
+    "es": "cebra",
+    "emoji": "🦓",
+    "color": null
+  },
+  {
+    "id": "ani-tiger",
+    "categoria": "animales",
+    "en": "tiger",
+    "es": "tigre",
+    "emoji": "🐯",
+    "color": null
+  },
+  {
+    "id": "ani-penguin",
+    "categoria": "animales",
+    "en": "penguin",
+    "es": "pingüino",
+    "emoji": "🐧",
+    "color": null
+  },
+  {
+    "id": "ani-panda",
+    "categoria": "animales",
+    "en": "panda",
+    "es": "panda",
+    "emoji": "🐼",
+    "color": null
+  },
+  {
+    "id": "ani-snake",
+    "categoria": "animales",
+    "en": "snake",
+    "es": "víbora",
+    "emoji": "🐍",
+    "color": null
+  },
+  {
+    "id": "ani-parrot",
+    "categoria": "animales",
+    "en": "parrot",
+    "es": "loro",
+    "emoji": "🦜",
+    "color": null
+  },
+  {
+    "id": "ani-kangaroo",
+    "categoria": "animales",
+    "en": "kangaroo",
+    "es": "canguro",
+    "emoji": "🦘",
+    "color": null
+  },
+  {
+    "id": "ani-flamingo",
+    "categoria": "animales",
+    "en": "flamingo",
+    "es": "flamenco",
+    "emoji": "🦩",
+    "color": null
+  },
+  {
+    "id": "cue-eye",
+    "categoria": "cuerpo",
+    "en": "eye",
+    "es": "ojo",
+    "emoji": "👁️",
+    "color": null
+  },
+  {
+    "id": "cue-ear",
+    "categoria": "cuerpo",
+    "en": "ear",
+    "es": "oreja",
+    "emoji": "👂",
+    "color": null
+  },
+  {
+    "id": "cue-nose",
+    "categoria": "cuerpo",
+    "en": "nose",
+    "es": "nariz",
+    "emoji": "👃",
+    "color": null
+  },
+  {
+    "id": "cue-mouth",
+    "categoria": "cuerpo",
+    "en": "mouth",
+    "es": "boca",
+    "emoji": "👄",
+    "color": null
+  },
+  {
+    "id": "cue-hand",
+    "categoria": "cuerpo",
+    "en": "hand",
+    "es": "mano",
+    "emoji": "✋",
+    "color": null
+  },
+  {
+    "id": "cue-arm",
+    "categoria": "cuerpo",
+    "en": "arm",
+    "es": "brazo",
+    "emoji": "💪",
+    "color": null
+  },
+  {
+    "id": "cue-leg",
+    "categoria": "cuerpo",
+    "en": "leg",
+    "es": "pierna",
+    "emoji": "🦵",
+    "color": null
+  },
+  {
+    "id": "cue-foot",
+    "categoria": "cuerpo",
+    "en": "foot",
+    "es": "pie",
+    "emoji": "🦶",
+    "color": null
+  },
+  {
+    "id": "cue-hair",
+    "categoria": "cuerpo",
+    "en": "hair",
+    "es": "pelo",
+    "emoji": "💇‍♀️",
+    "color": null
+  },
+  {
+    "id": "dia-monday",
+    "categoria": "dias",
+    "en": "Monday",
+    "es": "lunes",
+    "emoji": null,
+    "color": "#e53935",
+    "orden": 1
+  },
+  {
+    "id": "dia-tuesday",
+    "categoria": "dias",
+    "en": "Tuesday",
+    "es": "martes",
+    "emoji": null,
+    "color": "#fb8c00",
+    "orden": 2
+  },
+  {
+    "id": "dia-wednesday",
+    "categoria": "dias",
+    "en": "Wednesday",
+    "es": "miércoles",
+    "emoji": null,
+    "color": "#43a047",
+    "orden": 3
+  },
+  {
+    "id": "dia-thursday",
+    "categoria": "dias",
+    "en": "Thursday",
+    "es": "jueves",
+    "emoji": null,
+    "color": "#1e88e5",
+    "orden": 4
+  },
+  {
+    "id": "dia-friday",
+    "categoria": "dias",
+    "en": "Friday",
+    "es": "viernes",
+    "emoji": null,
+    "color": "#fdd835",
+    "orden": 5
+  },
+  {
+    "id": "dia-saturday",
+    "categoria": "dias",
+    "en": "Saturday",
+    "es": "sábado",
+    "emoji": null,
+    "color": "#8e24aa",
+    "orden": 6
+  },
+  {
+    "id": "dia-sunday",
+    "categoria": "dias",
+    "en": "Sunday",
+    "es": "domingo",
+    "emoji": null,
+    "color": "#f48fb1",
+    "orden": 7
+  },
+  {
+    "id": "pal-hello",
+    "categoria": "palabras",
+    "en": "hello",
+    "es": "hola",
+    "emoji": "👋",
+    "color": null
+  },
+  {
+    "id": "pal-goodbye",
+    "categoria": "palabras",
+    "en": "goodbye",
+    "es": "chau",
+    "emoji": "🙋‍♀️",
+    "color": null
+  },
+  {
+    "id": "pal-yes",
+    "categoria": "palabras",
+    "en": "yes",
+    "es": "sí",
+    "emoji": "✅",
+    "color": null
+  },
+  {
+    "id": "pal-no",
+    "categoria": "palabras",
+    "en": "no",
+    "es": "no",
+    "emoji": "❌",
+    "color": null
+  },
+  {
+    "id": "pal-please",
+    "categoria": "palabras",
+    "en": "please",
+    "es": "por favor",
+    "emoji": "🙏",
+    "color": null
+  },
+  {
+    "id": "pal-thank-you",
+    "categoria": "palabras",
+    "en": "thank you",
+    "es": "gracias",
+    "emoji": "💐",
+    "color": null
+  },
+  {
+    "id": "pal-mom",
+    "categoria": "palabras",
+    "en": "mom",
+    "es": "mamá",
+    "emoji": "👩",
+    "color": null
+  },
+  {
+    "id": "pal-dad",
+    "categoria": "palabras",
+    "en": "dad",
+    "es": "papá",
+    "emoji": "👨",
+    "color": null
+  },
+  {
+    "id": "pal-house",
+    "categoria": "palabras",
+    "en": "house",
+    "es": "casa",
+    "emoji": "🏠",
+    "color": null
+  },
+  {
+    "id": "pal-sun",
+    "categoria": "palabras",
+    "en": "sun",
+    "es": "sol",
+    "emoji": "☀️",
+    "color": null
+  },
+  {
+    "id": "pal-apple",
+    "categoria": "palabras",
+    "en": "apple",
+    "es": "manzana",
+    "emoji": "🍎",
+    "color": null
+  },
+  {
+    "id": "pal-book",
+    "categoria": "palabras",
+    "en": "book",
+    "es": "libro",
+    "emoji": "📖",
+    "color": null
+  },
+  {
+    "id": "pal-ball",
+    "categoria": "palabras",
+    "en": "ball",
+    "es": "pelota",
+    "emoji": "⚽",
+    "color": null
+  },
+  {
+    "id": "pal-water",
+    "categoria": "palabras",
+    "en": "water",
+    "es": "agua",
+    "emoji": "💧",
+    "color": null
+  },
+  {
+    "id": "pal-school",
+    "categoria": "palabras",
+    "en": "school",
+    "es": "escuela",
+    "emoji": "🏫",
+    "color": null
+  }
+]

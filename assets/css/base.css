@@ -1,0 +1,74 @@
+/* Estilos globales que Tailwind no cubre */
+html, body { margin: 0; padding: 0; }
+body { overscroll-behavior: none; font-family: Quicksand, system-ui, sans-serif; }
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+  user-select: none; line-height: 1;
+}
+.icon-fill { font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24; }
+
+/* Foco visible para teclado (los exports de Stitch no lo tenían) */
+:focus-visible { outline: 3px solid #39b8fd; outline-offset: 2px; }
+
+/* Ocultar scrollbar sólo en las tiras horizontales, no en toda la página */
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Botón táctil con "labio" inferior (DESIGN.md → Elevation Level 2) */
+.btn-tactil { transition: transform .08s, box-shadow .08s; }
+.btn-tactil:active { transform: translateY(2px); }
+
+/* Notificaciones */
+#toast-root { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+  z-index: 100; display: flex; flex-direction: column; gap: .5rem; align-items: center; }
+.toast { padding: .75rem 1.25rem; border-radius: 9999px; font-weight: 700; font-size: 14px;
+  box-shadow: 0 8px 20px rgba(30,41,59,.15); background: #263143; color: #ecf1ff;
+  animation: toast-in .2s ease-out; }
+.toast-error { background: #ba1a1a; color: #fff; }
+@keyframes toast-in { from { opacity: 0; transform: translateY(8px); } }
+
+/* Indicador de grabación */
+@keyframes pulso { 50% { opacity: .35; } }
+.grabando { animation: pulso 1s infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* ---------------- Festejos (Modo Niña) ---------------- */
+.celebracion { position: fixed; inset: 0; z-index: 120; display: flex; align-items: center; justify-content: center;
+  background: rgba(249, 249, 255, .75); backdrop-filter: blur(3px); overflow: hidden; cursor: pointer; }
+.celebracion-tarjeta { position: relative; z-index: 2; background: #fff; border-radius: 2rem; padding: 2rem 2.5rem;
+  text-align: center; box-shadow: 0 20px 25px -5px rgba(30,41,59,.15); animation: rebote .5s cubic-bezier(.34,1.56,.64,1);
+  max-width: min(92vw, 520px); }
+.particula { position: absolute; z-index: 1; line-height: 1; pointer-events: none; animation-timing-function: ease-out;
+  animation-fill-mode: both; }
+.particula i { display: block; width: 12px; height: 18px; border-radius: 3px; }
+.p-subir  { bottom: -60px; animation-name: subir; }
+.p-caer   { top: -60px; animation-name: caer; }
+.p-cohete { bottom: -60px; animation-name: cohete; }
+@keyframes subir  { to { transform: translate(var(--dx, 30px), -115vh) rotate(8deg); } }
+@keyframes caer   { to { transform: translateY(115vh) rotate(540deg); } }
+@keyframes cohete { to { transform: translate(40vw, -115vh) rotate(-10deg); } }
+@keyframes rebote { from { transform: scale(.4); opacity: 0; } }
+
+/* Palabras tocables y estado de lectura */
+.palabra-leer { border-radius: 1rem; padding: 0 .15em; transition: background .2s, color .2s; cursor: pointer; }
+.palabra-leer:hover { background: #dee8ff; }
+.palabra-ok { background: #6ffbbe; color: #002113; }
+.palabra-falta { background: #ffddb8; color: #2a1700; }
+.objeto-contado { transform: scale(1.15); }
+.objeto-contado::after { content: attr(data-n); position: absolute; top: -8px; right: -8px; width: 26px; height: 26px;
+  border-radius: 9999px; background: #006591; color: #fff; font: 700 14px/26px Quicksand, sans-serif; text-align: center; }
+@keyframes latido { 50% { transform: scale(1.08); } }
+.latido { animation: latido 1.2s ease-in-out infinite; }
+@keyframes sacudir { 25% { transform: translateX(-8px); } 75% { transform: translateX(8px); } }
+.sacudir { animation: sacudir .35s 2; }
+@keyframes irse { to { transform: translate(40px, -60px) scale(.6); opacity: .15; } }
+.se-va { animation: irse 1s ease-in forwards; animation-delay: .6s; }
+
+/* ---------------- Pantallas táctiles (celular y tablet) ---------------- */
+button, a, [role="button"] { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+body { -webkit-text-size-adjust: 100%; padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+img, .billete { -webkit-user-drag: none; user-select: none; }

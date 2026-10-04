@@ -1,0 +1,7 @@
+Poné acá las fotos de los billetes en PNG, con el valor como nombre:
+
+  10.png  20.png  50.png  100.png  200.png  500.png  1000.png  2000.png  10000.png  20000.png
+
+Si falta alguna, la app dibuja un billete de colores con el número.
+Se incluyen solas en el .exe cuando volvés a ejecutar construir.ps1.
+También se pueden subir desde la Zona de Papás → Kiosco (esas tienen prioridad).

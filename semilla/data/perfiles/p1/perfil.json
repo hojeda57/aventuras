@@ -1,0 +1,15 @@
+{
+  "nombre": "Loana",
+  "edad": 6,
+  "metaDiaria": 5,
+  "dificultadAdaptativa": true,
+  "puntos": 0,
+  "nivelLectura": 1,
+  "nivelMate": 1,
+  "nivelIngles": 1,
+  "nivelKiosco": 1,
+  "avatar": {
+    "cara": "👧",
+    "accesorio": null
+  }
+}

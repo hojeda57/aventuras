@@ -1,0 +1,72 @@
+[
+  {
+    "id": "b10",
+    "valor": 10,
+    "color": "#b08968",
+    "activo": true,
+    "imagen": null
+  },
+  {
+    "id": "b20",
+    "valor": 20,
+    "color": "#e57373",
+    "activo": true,
+    "imagen": null
+  },
+  {
+    "id": "b50",
+    "valor": 50,
+    "color": "#8d6e63",
+    "activo": true,
+    "imagen": null
+  },
+  {
+    "id": "b100",
+    "valor": 100,
+    "color": "#9575cd",
+    "activo": true,
+    "imagen": null
+  },
+  {
+    "id": "b200",
+    "valor": 200,
+    "color": "#4fa3e0",
+    "activo": true,
+    "imagen": null
+  },
+  {
+    "id": "b500",
+    "valor": 500,
+    "color": "#66bb6a",
+    "activo": true,
+    "imagen": null
+  },
+  {
+    "id": "b1000",
+    "valor": 1000,
+    "color": "#ffa726",
+    "activo": true,
+    "imagen": null
+  },
+  {
+    "id": "b2000",
+    "valor": 2000,
+    "color": "#f06292",
+    "activo": false,
+    "imagen": null
+  },
+  {
+    "id": "b10000",
+    "valor": 10000,
+    "color": "#26a69a",
+    "activo": false,
+    "imagen": null
+  },
+  {
+    "id": "b20000",
+    "valor": 20000,
+    "color": "#78909c",
+    "activo": false,
+    "imagen": null
+  }
+]
