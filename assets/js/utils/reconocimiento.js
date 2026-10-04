@@ -55,36 +55,64 @@ export function comparar(textoEsperado, candidatos, umbral = 0.75) {
   return { ok: ratio >= umbral, ratio, palabras };
 }
 
-/** Escucha hasta que el chico hace una pausa larga o se termina el tiempo. Devuelve alternativas de texto. */
-export function escucharVoz({ palabras = 1, alEmpezar } = {}) {
-  return new Promise((resolver, rechazar) => {
-    const r = new SR();
-    r.lang = "es-AR";
-    r.continuous = palabras > 1;
-    r.interimResults = false;
-    r.maxAlternatives = 5;
-    const candidatos = [];
-    let silencio, terminado = false;
-    const limite = setTimeout(() => r.stop(), 4000 + palabras * 900);
-    const fin = () => { if (!terminado) { terminado = true; clearTimeout(limite); clearTimeout(silencio); resolver(candidatos); } };
+/**
+ * Abre el micrófono y escucha.
+ *  - manual: true  → escucha SIN límite de pausas hasta que se llame a terminar() (botón "¡Terminé!").
+ *                    Si el navegador corta solo (Chrome lo hace tras un silencio), se vuelve a abrir sin perder lo leído.
+ *  - manual: false → termina solo tras una pausa de 2,5 s (palabras sueltas).
+ * alParcial(texto) se llama mientras habla, con todo lo reconocido hasta ese momento (para pintar en vivo).
+ * Devuelve { terminar(), resultado } — resultado es una promesa con las alternativas de texto.
+ */
+export function escuchar({ manual = true, palabras = 1, alEmpezar, alParcial } = {}) {
+  const finales = [], alternativas = [];
+  let parcial = "", terminado = false, actual = null, silencio = null, reinicios = 0, empezo = false;
+  let resolver, rechazar;
+  const resultado = new Promise((ok, mal) => { resolver = ok; rechazar = mal; });
 
-    r.onstart = () => alEmpezar?.();
+  const terminar = () => {
+    if (terminado) return;
+    terminado = true;
+    clearTimeout(silencio); clearTimeout(limite);
+    try { actual?.stop(); } catch { /* ya estaba cerrado */ }
+    // pequeña espera para recibir el último resultado que el navegador tenga en camino
+    setTimeout(() => resolver([[...finales, parcial].join(" ").trim(), ...alternativas, parcial].filter(Boolean)), 400);
+  };
+
+  const abrir = () => {
+    const r = (actual = new SR());
+    r.lang = "es-AR";
+    r.continuous = true;
+    r.interimResults = true;
+    r.maxAlternatives = 5;
+    r.onstart = () => { if (!empezo) { empezo = true; alEmpezar?.(); } };
     r.onresult = (e) => {
-      const partes = [];
-      for (let i = 0; i < e.results.length; i++) {
-        partes.push(e.results[i][0].transcript);
-        for (const alt of e.results[i]) candidatos.push(alt.transcript);
+      parcial = "";
+      for (let i = e.resultIndex; i < e.results.length; i++) {
+        const res = e.results[i];
+        if (res.isFinal) {
+          finales.push(res[0].transcript);
+          for (const alt of res) alternativas.push(alt.transcript);
+        } else parcial += res[0].transcript + " ";
       }
-      candidatos.push(partes.join(" "));
-      clearTimeout(silencio);
-      silencio = setTimeout(() => r.stop(), 2200); // pausa larga = terminó de leer
+      alParcial?.([...finales, parcial].join(" "));
+      if (!manual) { clearTimeout(silencio); silencio = setTimeout(terminar, 2500); }
     };
     r.onerror = (e) => {
-      if (["no-speech", "aborted"].includes(e.error)) return fin();
-      terminado = true; clearTimeout(limite); rechazar(e);
+      if (["not-allowed", "service-not-allowed"].includes(e.error)) {
+        terminado = true; clearTimeout(limite); rechazar(e);
+      } // "no-speech", "aborted", "network": se resuelven en onend
     };
-    r.onend = fin;
+    r.onend = () => {
+      if (terminado) return;
+      if (!manual) return terminar();
+      if (++reinicios > 200) return terminar(); // seguridad
+      setTimeout(() => { if (!terminado) { try { abrir(); } catch { terminar(); } } }, 250);
+    };
     r.start();
-    escucharVoz.detener = () => r.stop();
-  });
+  };
+
+  // Límite de seguridad: 5 minutos leyendo (manual) o lo que dure una palabra (automático)
+  const limite = setTimeout(terminar, manual ? 5 * 60 * 1000 : 6000 + palabras * 1500);
+  try { abrir(); } catch (err) { terminado = true; clearTimeout(limite); rechazar(err); }
+  return { terminar, resultado };
 }

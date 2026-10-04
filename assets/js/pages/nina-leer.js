@@ -2,12 +2,12 @@ import { api } from "../core/api.js";
 import { personalizar } from "../core/app.js";
 import { guardiaNina } from "../components/nina-guardia.js";
 import { $, $$, esc, toast } from "../core/dom.js";
-import { ANIMOS, ELOGIOS, FIGURITAS, NIVELES, frase } from "../core/constantes.js";
+import { ANIMOS, ELOGIOS, FIGURITAS, NIVELES, frase, g } from "../core/constantes.js";
 import { actualizarBarra, renderBarra } from "../components/nina-barra.js";
 import { celebrar } from "../components/celebracion.js";
 import { silabear } from "../utils/silabas.js";
 import { detener, escuchar, hablar, reproducir } from "../utils/audio.js";
-import { comparar, escucharVoz, reconocimientoDisponible } from "../utils/reconocimiento.js";
+import { comparar, escuchar as escucharMicrofono, reconocimientoDisponible } from "../utils/reconocimiento.js";
 import { sonido } from "../utils/sonidos.js";
 
 const MODOS = {
@@ -19,7 +19,7 @@ const INTENTOS_MAX = 3;
 
 const e = {
   perfil: null, progreso: null, modo: null, nivel: 1,
-  sesion: [], idx: 0, pagina: 0, intentos: 0, aciertos: 0, puntosInicio: 0, subio: false, ocupado: false,
+  sesion: [], idx: 0, pagina: 0, intentos: 0, aciertos: 0, puntosInicio: 0, subio: false, ocupado: false, escucha: null,
 };
 const nombre = () => e.perfil?.nombre || "";
 const item = () => e.sesion[e.idx];
@@ -135,7 +135,10 @@ function pantallaJuego() {
 
   $("#btnEscuchar").addEventListener("click", () => { sonido.tap(); escuchar(esCuento ? null : it.audio, texto); });
   $("#btnLeer").addEventListener("click", leer);
-  $("#btnAdulto").addEventListener("click", () => !e.ocupado && acierto());
+  $("#btnAdulto").addEventListener("click", () => {
+    if (e.escucha) { e.forzarAcierto = true; e.escucha.terminar(); return; }  // un adulto confirma mientras escucha
+    if (!e.ocupado) acierto();
+  });
   $("#texto").addEventListener("click", tocarPalabra);
   $("#texto").addEventListener("keydown", (ev) => ev.key === "Enter" && tocarPalabra(ev));
 }
@@ -151,28 +154,58 @@ function tocarPalabra(ev) {
   $("#silabas").onclick = (e2) => { const b = e2.target.closest("[data-silaba]"); if (b) hablar(b.dataset.silaba.toLowerCase(), { lento: true }); };
 }
 
+const BOTON_LEER = "🎤 ¡Leer en voz alta!";
+const CLASES_LEER = "bg-primary-container text-on-primary-container shadow-[0_5px_0_0_#b45309]";
+const CLASES_TERMINE = "bg-tertiary text-on-tertiary shadow-[0_5px_0_0_#004e34]";
+
+function botonModo(escuchando) {
+  const btn = $("#btnLeer");
+  if (!btn) return;
+  btn.classList.remove(...(escuchando ? CLASES_LEER : CLASES_TERMINE).split(" "));
+  btn.classList.add(...(escuchando ? CLASES_TERMINE : CLASES_LEER).split(" "));
+  btn.classList.toggle("latido", escuchando);
+  btn.innerHTML = escuchando ? "✅ ¡Terminé!" : BOTON_LEER;
+  $("#btnEscuchar").disabled = escuchando;
+  $("#btnEscuchar").classList.toggle("opacity-40", escuchando);
+}
+
 async function leer() {
+  if (e.escucha) { sonido.tap(); e.escucha.terminar(); return; }   // segundo toque: "¡Terminé!"
   if (e.ocupado) return;
   if (!reconocimientoDisponible) { toast("Este navegador no puede escuchar. Probá con Chrome o Edge.", "error"); return; }
   e.ocupado = true;
+  e.forzarAcierto = false;
   detener();
-  const btn = $("#btnLeer");
-  btn.classList.add("latido");
-  btn.innerHTML = "👂 Te escucho…";
-  $("#estadoVoz").textContent = "¡Leé en voz alta!";
-  $$(".palabra-leer").forEach((s) => s.classList.remove("palabra-ok", "palabra-falta"));
+  const texto = textoActual();
+  const manual = item().tipo !== "palabra";   // frases y cuentos: escucha hasta que toque "¡Terminé!"
+  $$(".palabra-leer").forEach((sp) => sp.classList.remove("palabra-ok", "palabra-falta"));
+  $("#estadoVoz").innerHTML = manual
+    ? g("👂 Te escucho. Leé {tranquila}, sin apuro.<span class='block font-body-md text-body-md text-on-surface-variant'>Cuando termines, tocá <b>¡Terminé!</b></span>")
+    : "👂 ¡Leé en voz alta!";
+  botonModo(true);
   try {
-    const candidatos = await escucharVoz({ palabras: textoActual().split(/\s+/).length, alEmpezar: () => sonido.tap() });
-    const r = comparar(textoActual(), candidatos, MODOS[e.modo].umbral);
-    r.palabras.forEach((p, i) => $(`.palabra-leer[data-i="${i}"]`)?.classList.add(p.leida ? "palabra-ok" : "palabra-falta"));
+    e.escucha = escucharMicrofono({
+      manual,
+      palabras: texto.split(/\s+/).length,
+      alEmpezar: () => sonido.tap(),
+      alParcial: (dicho) => {   // pinta de verde lo que ya leyó, en vivo
+        comparar(texto, [dicho], 0).palabras.forEach((p, i) => p.leida && $(`.palabra-leer[data-i="${i}"]`)?.classList.add("palabra-ok"));
+      },
+    });
+    const candidatos = await e.escucha.resultado;
+    e.escucha = null;
+    botonModo(false);
     e.ocupado = false;
+    if (e.forzarAcierto) return acierto();
+    const r = comparar(texto, candidatos, MODOS[e.modo].umbral);
+    r.palabras.forEach((p, i) => $(`.palabra-leer[data-i="${i}"]`)?.classList.add(p.leida ? "palabra-ok" : "palabra-falta"));
     if (r.ok) await acierto();
     else await fallo(candidatos.length === 0);
   } catch (err) {
+    e.escucha = null;
+    botonModo(false);
     e.ocupado = false;
-    toast(err.error === "not-allowed" ? "Hay que permitir el micrófono (y abrir la app con https o localhost)." : "No pude escuchar. Probá otra vez.", "error");
-  } finally {
-    if ($("#btnLeer")) { $("#btnLeer").classList.remove("latido"); $("#btnLeer").innerHTML = "🎤 ¡Leer en voz alta!"; }
+    toast(err?.error === "not-allowed" ? "Hay que permitir el micrófono (y abrir la app con https o localhost)." : "No pude escuchar. Probá otra vez.", "error");
   }
 }
 
