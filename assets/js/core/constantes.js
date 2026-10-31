@@ -88,7 +88,7 @@ export const ANIMOS_MATE = [
 const GENERO = { g: "a" };
 export const fijarGenero = (g) => { GENERO.g = g === "o" ? "o" : "a"; };
 const FORMAS = { un: ["una", "un"], genia: ["genia", "genio"], campeona: ["campeona", "campeón"], lectora: ["lectora", "lector"],
-  juntas: ["juntas", "juntos"], bienvenida: ["bienvenida", "bienvenido"], tranquila: ["tranquila", "tranquilo"] };
+  juntas: ["juntas", "juntos"], bienvenida: ["bienvenida", "bienvenido"], tranquila: ["tranquila", "tranquilo"], gran: ["gran", "gran"], pensadora: ["pensadora", "pensador"] };
 /** Adapta {genia}, {juntas}, etc. al género del jugador. */
 export const g = (texto) => texto.replace(/\{(\w+)\}/g, (m, k) => (FORMAS[k] ? FORMAS[k][GENERO.g === "o" ? 1 : 0] : m));
 export const frase = (lista, nombre) => g(lista[Math.floor(Math.random() * lista.length)]).replaceAll("{n}", nombre);

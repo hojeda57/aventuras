@@ -5,11 +5,11 @@ import { verifyAsync } from "../vendor/noble-ed25519.js";
 import { CLAVE_PUBLICA } from "../clave_publica.js";
 
 const RAIZ = new URL("../../../", import.meta.url); // carpeta raíz de la app (donde está index.html)
-const VERSION = "1.3.0";
-const COLECCIONES = ["lectura", "matematicas", "ingles", "billetes", "productos"];
-const AREAS = { lectura: "lectura", mate: "matematicas", ingles: "ingles", kiosco: "productos" };
-const CONTADOR = { lectura: ["lectura", "dominada"], matematicas: ["mate", "superado"], ingles: ["ingles", "dominada"], productos: ["kiosco", "dominada"] };
-const CLAVE_NIVEL = { lectura: "nivelLectura", mate: "nivelMate", ingles: "nivelIngles", kiosco: "nivelKiosco" };
+const VERSION = "1.4.0";
+const COLECCIONES = ["lectura", "matematicas", "ingles", "billetes", "productos", "tablas", "juegos", "palabras"];
+const AREAS = { lectura: "lectura", mate: "matematicas", ingles: "ingles", kiosco: "productos", multi: "tablas", pensar: "juegos" };
+const CONTADOR = { lectura: ["lectura", "dominada"], matematicas: ["mate", "superado"], ingles: ["ingles", "dominada"], productos: ["kiosco", "dominada"], tablas: ["multi", "dominada"], juegos: ["pensar", "dominada"] };
+const CLAVE_NIVEL = { lectura: "nivelLectura", mate: "nivelMate", ingles: "nivelIngles", kiosco: "nivelKiosco", multi: "nivelMulti", pensar: "nivelPensar" };
 const ACIERTOS_PARA_SUBIR = 8;
 const PUNTOS_LECTURA = { palabra: 10, frase: 15, cuento: 30 };
 const EDICION_POR_DEFECTO = { edicion: "familiar", marca: { nombre: "Aventuras", corto: "Aventuras" }, gratis: ["lectura", "mate"] };
@@ -61,7 +61,7 @@ const leerHistorial = async (pid) => (pid ? (await kv.get(`historial:${pid}`)) |
 
 function perfilNuevo(nombre, edad = 6, avatar = null, genero = "a") {
   return { nombre, edad, genero: genero === "o" ? "o" : "a", metaDiaria: 5, dificultadAdaptativa: true, puntos: 0,
-    nivelLectura: 1, nivelMate: 1, nivelIngles: 1, nivelKiosco: 1, avatar: avatar || { cara: "🧒", accesorio: null } };
+    nivelLectura: 1, nivelMate: 1, nivelIngles: 1, nivelKiosco: 1, nivelMulti: 1, nivelPensar: 1, avatar: avatar || { cara: "🧒", accesorio: null } };
 }
 
 // ---------------------------------------------------------------- licencia
@@ -123,6 +123,8 @@ async function resumen() {
   (await col("matematicas")).forEach((r) => nombres.set(`mate|${r.id}`, r.titulo));
   (await col("ingles")).forEach((v) => nombres.set(`ingles|${v.id}`, `${v.en} (${v.es})`));
   (await col("productos")).forEach((k) => nombres.set(`kiosco|${k.id}`, `Comprar ${k.nombre.toLowerCase()}`));
+  (await col("tablas")).forEach((t) => nombres.set(`multi|${t.id}`, `Tabla del ${t.tabla}`));
+  (await col("juegos")).forEach((j) => nombres.set(`pensar|${j.id}`, `Acertijo: ${j.titulo}`));
   const nombre = (e) => nombres.get(`${e.area}|${e.itemId}`) || "(eliminado)";
 
   const aciertos = Object.fromEntries(Object.keys(AREAS).map((a) => [a, { 1: 0, 2: 0, 3: 0 }]));
@@ -146,7 +148,7 @@ async function resumen() {
     racha: racha(hist), aciertosParaSubir: ACIERTOS_PARA_SUBIR, aciertosPorNivel: aciertos, semana,
     porcentajes: {
       lectura: pct(hist.filter((e) => e.area === "lectura")), ingles: pct(hist.filter((e) => e.area === "ingles")),
-      kiosco: pct(hist.filter((e) => e.area === "kiosco")),
+      kiosco: pct(hist.filter((e) => e.area === "kiosco")), multi: pct(hist.filter((e) => e.area === "multi")), pensar: pct(hist.filter((e) => e.area === "pensar")),
       suma: pct(mate.filter((e) => e.operacion === "suma")), resta: pct(mate.filter((e) => e.operacion === "resta")),
       contar: pct(mate.filter((e) => e.operacion === "contar")),
     },
@@ -169,7 +171,7 @@ async function registrar(area, itemId, correcto, nivelPedido) {
   const item = ((await kv.get(`col:${AREAS[area]}`)) || []).find((i) => i.id === itemId) || falla("No existe ese ejercicio");
   let nivel, puntos;
   if (area === "lectura") { nivel = item.nivel || 1; puntos = (PUNTOS_LECTURA[item.tipo] || 10) + 5 * (nivel - 1); }
-  else if (area === "ingles" || area === "kiosco") {
+  else if (area === "ingles" || area === "kiosco" || area === "multi" || area === "pensar") {
     const tope = perfil[CLAVE_NIVEL[area]] || 1;
     nivel = Math.max(1, Math.min(Number(nivelPedido) || tope, tope)); puntos = 10 + 5 * (nivel - 1);
   } else { nivel = nivelMate(item); puntos = item.puntos || 10; }

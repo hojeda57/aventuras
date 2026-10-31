@@ -151,6 +151,12 @@ async function mostrarMapa() {
       ${isla({ href: "kiosco.html", titulo: "El Kiosco", emoji: "🏪", escena: "💵 🍭 🛍️", texto: "Comprar y pagar con billetes",
         fondo: "bg-[linear-gradient(160deg,#ffe4e6,#fda4af)] text-[#4c0519]", nivel: progreso.nivelKiosco || 1,
         aciertos: a.kiosco?.[progreso.nivelKiosco || 1] ?? 0, necesarios: progreso.aciertosParaSubir, bloqueada: bloq("kiosco") })}
+      ${isla({ href: "multi.html", titulo: "Torre de las Tablas", emoji: "🗼", escena: "✖️ 🃏 🧺", texto: "Multiplicar con grupos y tarjetas",
+        fondo: "bg-[linear-gradient(160deg,#ffe0f0,#f9a8d4)] text-[#500724]", nivel: progreso.nivelMulti || 1,
+        aciertos: a.multi?.[progreso.nivelMulti || 1] ?? 0, necesarios: progreso.aciertosParaSubir, bloqueada: bloq("multi") })}
+      ${isla({ href: "pensar.html", titulo: "Bosque de los Acertijos", emoji: "🌳", escena: "🧠 🔤 🔁", texto: "Juegos para pensar y descubrir",
+        fondo: "bg-[linear-gradient(160deg,#dcfce7,#86efac)] text-[#14532d]", nivel: progreso.nivelPensar || 1,
+        aciertos: a.pensar?.[progreso.nivelPensar || 1] ?? 0, necesarios: progreso.aciertosParaSubir, bloqueada: bloq("pensar") })}
     </section>
 
     <section class="grid grid-cols-1 md:grid-cols-2 gap-space-lg mt-space-lg">
@@ -181,7 +187,7 @@ async function mostrarMapa() {
 
   $("#btnSaludo").addEventListener("click", () => {
     sonido.tap();
-    hablar(`¡Hola, ${perfil.nombre}! ¿Qué aventura hacemos hoy? Podés ir a la isla de las letras, a la montaña de las cuentas, al castillo del inglés o al kiosco.`);
+    hablar(`¡Hola, ${perfil.nombre}! ¿Qué aventura hacemos hoy? Podés ir a la isla de las letras, a la montaña de las cuentas, al castillo del inglés, al kiosco, a la torre de las tablas o al bosque de los acertijos.`);
   });
 }
 

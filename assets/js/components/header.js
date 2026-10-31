@@ -7,6 +7,7 @@ const NAV = [
   { id: "matematicas", label: () => "Contenidos de matemáticas", href: "matematicas.html" },
   { id: "ingles",      label: () => "Inglés",                    href: "ingles.html" },
   { id: "kiosco",      label: () => "Kiosco",                    href: "kiosco.html" },
+  { id: "tablas",      label: () => "Tablas",                    href: "tablas.html" },
 ];
 
 /** Barra superior común de la Zona de Papás. */

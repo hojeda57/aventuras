@@ -82,6 +82,8 @@ function render() {
       ${nivelArea("mate", "nivelMate", "🔢 Números")}
       ${nivelArea("ingles", "nivelIngles", "🏰 Inglés")}
       ${nivelArea("kiosco", "nivelKiosco", "🏪 Kiosco")}
+      ${nivelArea("multi", "nivelMulti", "🗼 Tablas")}
+      ${nivelArea("pensar", "nivelPensar", "🧠 Acertijos")}
     </section>
 
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-space-md">
@@ -89,7 +91,7 @@ function render() {
         <h2 class="font-headline-sm text-headline-sm">Aciertos por tema</h2>
         ${barraPct("Lectura", p.porcentajes.lectura)}${barraPct("Sumas", p.porcentajes.suma)}
         ${barraPct("Restas", p.porcentajes.resta)}${barraPct("Contar", p.porcentajes.contar)}
-        ${barraPct("Inglés", p.porcentajes.ingles)}${barraPct("Kiosco (plata)", p.porcentajes.kiosco)}
+        ${barraPct("Inglés", p.porcentajes.ingles)}${barraPct("Kiosco (plata)", p.porcentajes.kiosco)}${barraPct("Tablas (multiplicar)", p.porcentajes.multi)}${barraPct("Acertijos (pensar)", p.porcentajes.pensar)}
       </div>
       <div class="bg-surface-container-lowest rounded-lg p-space-md shadow-sm">
         <h2 class="font-headline-sm text-headline-sm mb-space-sm">Últimos 7 días</h2>
@@ -106,7 +108,7 @@ function render() {
       <div class="bg-surface-container-lowest rounded-lg p-space-md shadow-sm">
         <h2 class="font-headline-sm text-headline-sm mb-space-sm">Para practicar más</h2>
         ${p.paraPracticar.length ? `<ul class="space-y-2">${p.paraPracticar.map((x) => `
-          <li class="flex justify-between gap-2 p-2 rounded bg-surface-container-low"><span>${{ lectura: "📖", mate: "🔢", ingles: "🏰", kiosco: "🏪" }[x.area]} ${esc(x.nombre)}</span>
+          <li class="flex justify-between gap-2 p-2 rounded bg-surface-container-low"><span>${{ lectura: "📖", mate: "🔢", ingles: "🏰", kiosco: "🏪", multi: "🗼", pensar: "🧠" }[x.area]} ${esc(x.nombre)}</span>
           <span class="font-label-sm text-label-sm text-on-surface-variant">${x.fallas} ${x.fallas === 1 ? "vez" : "veces"} sin lograrlo</span></li>`).join("")}</ul>`
           : `<p class="text-on-surface-variant">Nada pendiente por ahora.</p>`}
       </div>

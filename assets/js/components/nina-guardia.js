@@ -3,7 +3,7 @@ import { api } from "../core/api.js";
 import { info, titulo } from "../core/app.js";
 import { fijarGenero } from "../core/constantes.js";
 
-const NOMBRES = { lectura: "la Isla de las Letras", mate: "la Montaña de las Cuentas", ingles: "el Castillo del Inglés", kiosco: "el Kiosco" };
+const NOMBRES = { lectura: "la Isla de las Letras", mate: "la Montaña de las Cuentas", ingles: "el Castillo del Inglés", kiosco: "el Kiosco", multi: "la Torre de las Tablas", pensar: "el Bosque de los Acertijos" };
 
 /**
  * Si no hay perfil manda al mapa (que pide crearlo). Si el área está bloqueada muestra un aviso

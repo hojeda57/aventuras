@@ -1,0 +1,32 @@
+[
+  {
+    "id": "letra-inicial",
+    "titulo": "¿Con qué letra empieza?",
+    "emoji": "🔤"
+  },
+  {
+    "id": "buscar-letra",
+    "titulo": "Buscá las que empiezan con…",
+    "emoji": "🔎"
+  },
+  {
+    "id": "no-va",
+    "titulo": "¿Cuál no va?",
+    "emoji": "🙃"
+  },
+  {
+    "id": "que-sigue",
+    "titulo": "¿Qué sigue?",
+    "emoji": "🔁"
+  },
+  {
+    "id": "ordenar",
+    "titulo": "Ordená las letras",
+    "emoji": "🧩"
+  },
+  {
+    "id": "rima",
+    "titulo": "¿Qué rima?",
+    "emoji": "🎵"
+  }
+]

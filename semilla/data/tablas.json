@@ -1,0 +1,72 @@
+[
+  {
+    "id": "t1",
+    "tabla": 1,
+    "emoji": "🐞",
+    "color": "#f43f5e",
+    "activo": true
+  },
+  {
+    "id": "t2",
+    "tabla": 2,
+    "emoji": "🐰",
+    "color": "#fb8c00",
+    "activo": true
+  },
+  {
+    "id": "t3",
+    "tabla": 3,
+    "emoji": "🦋",
+    "color": "#d97706",
+    "activo": true
+  },
+  {
+    "id": "t4",
+    "tabla": 4,
+    "emoji": "🐢",
+    "color": "#43a047",
+    "activo": true
+  },
+  {
+    "id": "t5",
+    "tabla": 5,
+    "emoji": "⭐",
+    "color": "#1e88e5",
+    "activo": true
+  },
+  {
+    "id": "t6",
+    "tabla": 6,
+    "emoji": "🐝",
+    "color": "#8e24aa",
+    "activo": true
+  },
+  {
+    "id": "t7",
+    "tabla": 7,
+    "emoji": "🌈",
+    "color": "#f48fb1",
+    "activo": true
+  },
+  {
+    "id": "t8",
+    "tabla": 8,
+    "emoji": "🐙",
+    "color": "#26a69a",
+    "activo": true
+  },
+  {
+    "id": "t9",
+    "tabla": 9,
+    "emoji": "🍎",
+    "color": "#e53935",
+    "activo": true
+  },
+  {
+    "id": "t10",
+    "tabla": 10,
+    "emoji": "🚀",
+    "color": "#5c6bc0",
+    "activo": true
+  }
+]

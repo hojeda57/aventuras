@@ -1,0 +1,466 @@
+[
+  {
+    "id": "w-gato",
+    "palabra": "GATO",
+    "emoji": "🐱",
+    "categoria": "animales",
+    "rima": "ato"
+  },
+  {
+    "id": "w-pato",
+    "palabra": "PATO",
+    "emoji": "🦆",
+    "categoria": "animales",
+    "rima": "ato"
+  },
+  {
+    "id": "w-perro",
+    "palabra": "PERRO",
+    "emoji": "🐶",
+    "categoria": "animales"
+  },
+  {
+    "id": "w-oso",
+    "palabra": "OSO",
+    "emoji": "🐻",
+    "categoria": "animales"
+  },
+  {
+    "id": "w-oveja",
+    "palabra": "OVEJA",
+    "emoji": "🐑",
+    "categoria": "animales",
+    "rima": "eja"
+  },
+  {
+    "id": "w-abeja",
+    "palabra": "ABEJA",
+    "emoji": "🐝",
+    "categoria": "animales",
+    "rima": "eja"
+  },
+  {
+    "id": "w-araña",
+    "palabra": "ARAÑA",
+    "emoji": "🕷️",
+    "categoria": "animales"
+  },
+  {
+    "id": "w-mono",
+    "palabra": "MONO",
+    "emoji": "🐒",
+    "categoria": "animales"
+  },
+  {
+    "id": "w-ratón",
+    "palabra": "RATÓN",
+    "emoji": "🐭",
+    "categoria": "animales",
+    "rima": "on"
+  },
+  {
+    "id": "w-león",
+    "palabra": "LEÓN",
+    "emoji": "🦁",
+    "categoria": "animales",
+    "rima": "on"
+  },
+  {
+    "id": "w-rana",
+    "palabra": "RANA",
+    "emoji": "🐸",
+    "categoria": "animales",
+    "rima": "ana"
+  },
+  {
+    "id": "w-vaca",
+    "palabra": "VACA",
+    "emoji": "🐮",
+    "categoria": "animales"
+  },
+  {
+    "id": "w-caballo",
+    "palabra": "CABALLO",
+    "emoji": "🐴",
+    "categoria": "animales"
+  },
+  {
+    "id": "w-conejo",
+    "palabra": "CONEJO",
+    "emoji": "🐰",
+    "categoria": "animales"
+  },
+  {
+    "id": "w-tortuga",
+    "palabra": "TORTUGA",
+    "emoji": "🐢",
+    "categoria": "animales"
+  },
+  {
+    "id": "w-elefante",
+    "palabra": "ELEFANTE",
+    "emoji": "🐘",
+    "categoria": "animales"
+  },
+  {
+    "id": "w-iguana",
+    "palabra": "IGUANA",
+    "emoji": "🦎",
+    "categoria": "animales",
+    "rima": "ana"
+  },
+  {
+    "id": "w-pez",
+    "palabra": "PEZ",
+    "emoji": "🐟",
+    "categoria": "animales"
+  },
+  {
+    "id": "w-caracol",
+    "palabra": "CARACOL",
+    "emoji": "🐌",
+    "categoria": "animales",
+    "rima": "ol"
+  },
+  {
+    "id": "w-delfín",
+    "palabra": "DELFÍN",
+    "emoji": "🐬",
+    "categoria": "animales"
+  },
+  {
+    "id": "w-jirafa",
+    "palabra": "JIRAFA",
+    "emoji": "🦒",
+    "categoria": "animales"
+  },
+  {
+    "id": "w-ballena",
+    "palabra": "BALLENA",
+    "emoji": "🐳",
+    "categoria": "animales"
+  },
+  {
+    "id": "w-manzana",
+    "palabra": "MANZANA",
+    "emoji": "🍎",
+    "categoria": "frutas",
+    "rima": "ana"
+  },
+  {
+    "id": "w-banana",
+    "palabra": "BANANA",
+    "emoji": "🍌",
+    "categoria": "frutas",
+    "rima": "ana"
+  },
+  {
+    "id": "w-uva",
+    "palabra": "UVA",
+    "emoji": "🍇",
+    "categoria": "frutas"
+  },
+  {
+    "id": "w-pera",
+    "palabra": "PERA",
+    "emoji": "🍐",
+    "categoria": "frutas"
+  },
+  {
+    "id": "w-frutilla",
+    "palabra": "FRUTILLA",
+    "emoji": "🍓",
+    "categoria": "frutas"
+  },
+  {
+    "id": "w-naranja",
+    "palabra": "NARANJA",
+    "emoji": "🍊",
+    "categoria": "frutas"
+  },
+  {
+    "id": "w-limón",
+    "palabra": "LIMÓN",
+    "emoji": "🍋",
+    "categoria": "frutas",
+    "rima": "on"
+  },
+  {
+    "id": "w-sandía",
+    "palabra": "SANDÍA",
+    "emoji": "🍉",
+    "categoria": "frutas"
+  },
+  {
+    "id": "w-ananá",
+    "palabra": "ANANÁ",
+    "emoji": "🍍",
+    "categoria": "frutas"
+  },
+  {
+    "id": "w-cereza",
+    "palabra": "CEREZA",
+    "emoji": "🍒",
+    "categoria": "frutas"
+  },
+  {
+    "id": "w-pan",
+    "palabra": "PAN",
+    "emoji": "🥖",
+    "categoria": "comida"
+  },
+  {
+    "id": "w-queso",
+    "palabra": "QUESO",
+    "emoji": "🧀",
+    "categoria": "comida"
+  },
+  {
+    "id": "w-huevo",
+    "palabra": "HUEVO",
+    "emoji": "🥚",
+    "categoria": "comida"
+  },
+  {
+    "id": "w-leche",
+    "palabra": "LECHE",
+    "emoji": "🥛",
+    "categoria": "comida"
+  },
+  {
+    "id": "w-torta",
+    "palabra": "TORTA",
+    "emoji": "🎂",
+    "categoria": "comida"
+  },
+  {
+    "id": "w-pizza",
+    "palabra": "PIZZA",
+    "emoji": "🍕",
+    "categoria": "comida"
+  },
+  {
+    "id": "w-helado",
+    "palabra": "HELADO",
+    "emoji": "🍦",
+    "categoria": "comida"
+  },
+  {
+    "id": "w-sopa",
+    "palabra": "SOPA",
+    "emoji": "🍲",
+    "categoria": "comida"
+  },
+  {
+    "id": "w-galleta",
+    "palabra": "GALLETA",
+    "emoji": "🍪",
+    "categoria": "comida"
+  },
+  {
+    "id": "w-pelota",
+    "palabra": "PELOTA",
+    "emoji": "⚽",
+    "categoria": "objetos",
+    "rima": "ota"
+  },
+  {
+    "id": "w-bota",
+    "palabra": "BOTA",
+    "emoji": "👢",
+    "categoria": "objetos",
+    "rima": "ota"
+  },
+  {
+    "id": "w-silla",
+    "palabra": "SILLA",
+    "emoji": "🪑",
+    "categoria": "objetos"
+  },
+  {
+    "id": "w-cama",
+    "palabra": "CAMA",
+    "emoji": "🛏️",
+    "categoria": "objetos"
+  },
+  {
+    "id": "w-lápiz",
+    "palabra": "LÁPIZ",
+    "emoji": "✏️",
+    "categoria": "objetos"
+  },
+  {
+    "id": "w-libro",
+    "palabra": "LIBRO",
+    "emoji": "📖",
+    "categoria": "objetos"
+  },
+  {
+    "id": "w-tijera",
+    "palabra": "TIJERA",
+    "emoji": "✂️",
+    "categoria": "objetos"
+  },
+  {
+    "id": "w-globo",
+    "palabra": "GLOBO",
+    "emoji": "🎈",
+    "categoria": "objetos"
+  },
+  {
+    "id": "w-reloj",
+    "palabra": "RELOJ",
+    "emoji": "⏰",
+    "categoria": "objetos"
+  },
+  {
+    "id": "w-campana",
+    "palabra": "CAMPANA",
+    "emoji": "🔔",
+    "categoria": "objetos",
+    "rima": "ana"
+  },
+  {
+    "id": "w-vela",
+    "palabra": "VELA",
+    "emoji": "🕯️",
+    "categoria": "objetos"
+  },
+  {
+    "id": "w-taza",
+    "palabra": "TAZA",
+    "emoji": "☕",
+    "categoria": "objetos"
+  },
+  {
+    "id": "w-zapato",
+    "palabra": "ZAPATO",
+    "emoji": "👞",
+    "categoria": "objetos",
+    "rima": "ato"
+  },
+  {
+    "id": "w-corona",
+    "palabra": "CORONA",
+    "emoji": "👑",
+    "categoria": "objetos"
+  },
+  {
+    "id": "w-foto",
+    "palabra": "FOTO",
+    "emoji": "📷",
+    "categoria": "objetos",
+    "rima": "oto"
+  },
+  {
+    "id": "w-uno",
+    "palabra": "UNO",
+    "emoji": "1️⃣",
+    "categoria": "objetos"
+  },
+  {
+    "id": "w-auto",
+    "palabra": "AUTO",
+    "emoji": "🚗",
+    "categoria": "transporte"
+  },
+  {
+    "id": "w-avión",
+    "palabra": "AVIÓN",
+    "emoji": "✈️",
+    "categoria": "transporte",
+    "rima": "on"
+  },
+  {
+    "id": "w-barco",
+    "palabra": "BARCO",
+    "emoji": "⛵",
+    "categoria": "transporte"
+  },
+  {
+    "id": "w-tren",
+    "palabra": "TREN",
+    "emoji": "🚂",
+    "categoria": "transporte"
+  },
+  {
+    "id": "w-cohete",
+    "palabra": "COHETE",
+    "emoji": "🚀",
+    "categoria": "transporte"
+  },
+  {
+    "id": "w-moto",
+    "palabra": "MOTO",
+    "emoji": "🏍️",
+    "categoria": "transporte",
+    "rima": "oto"
+  },
+  {
+    "id": "w-sol",
+    "palabra": "SOL",
+    "emoji": "☀️",
+    "categoria": "naturaleza",
+    "rima": "ol"
+  },
+  {
+    "id": "w-luna",
+    "palabra": "LUNA",
+    "emoji": "🌙",
+    "categoria": "naturaleza"
+  },
+  {
+    "id": "w-estrella",
+    "palabra": "ESTRELLA",
+    "emoji": "⭐",
+    "categoria": "naturaleza"
+  },
+  {
+    "id": "w-flor",
+    "palabra": "FLOR",
+    "emoji": "🌸",
+    "categoria": "naturaleza"
+  },
+  {
+    "id": "w-árbol",
+    "palabra": "ÁRBOL",
+    "emoji": "🌳",
+    "categoria": "naturaleza"
+  },
+  {
+    "id": "w-nube",
+    "palabra": "NUBE",
+    "emoji": "☁️",
+    "categoria": "naturaleza"
+  },
+  {
+    "id": "w-fuego",
+    "palabra": "FUEGO",
+    "emoji": "🔥",
+    "categoria": "naturaleza"
+  },
+  {
+    "id": "w-hoja",
+    "palabra": "HOJA",
+    "emoji": "🍃",
+    "categoria": "naturaleza"
+  },
+  {
+    "id": "w-isla",
+    "palabra": "ISLA",
+    "emoji": "🏝️",
+    "categoria": "naturaleza"
+  },
+  {
+    "id": "w-ola",
+    "palabra": "OLA",
+    "emoji": "🌊",
+    "categoria": "naturaleza"
+  },
+  {
+    "id": "w-arcoíris",
+    "palabra": "ARCOÍRIS",
+    "emoji": "🌈",
+    "categoria": "naturaleza"
+  }
+]

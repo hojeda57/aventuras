@@ -67,7 +67,7 @@ function avatar() {
 }
 
 function diplomas() {
-  const { aciertosPorNivel: a, aciertosParaSubir: meta, nivelLectura, nivelMate, nivelIngles = 1, nivelKiosco = 1 } = e.progreso;
+  const { aciertosPorNivel: a, aciertosParaSubir: meta, nivelLectura, nivelMate, nivelIngles = 1, nivelKiosco = 1, nivelMulti = 1, nivelPensar = 1 } = e.progreso;
   const tarjeta = (area, titulo, emoji, nivelActual) => [1, 2, 3].map((n) => {
     const logrado = nivelActual > n || (n === 3 && a[area]["3"] >= meta);
     const avance = n < nivelActual ? meta : n === nivelActual ? Math.min(a[area][n], meta) : 0;
@@ -79,7 +79,7 @@ function diplomas() {
     </div>`;
   }).join("");
   return `<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
-    ${tarjeta("lectura", "Lectura", "📖", nivelLectura)}${tarjeta("mate", "Números", "🔢", nivelMate)}${tarjeta("ingles", "Inglés", "🏰", nivelIngles)}${tarjeta("kiosco", "Kiosco", "🏪", nivelKiosco)}
+    ${tarjeta("lectura", "Lectura", "📖", nivelLectura)}${tarjeta("mate", "Números", "🔢", nivelMate)}${tarjeta("ingles", "Inglés", "🏰", nivelIngles)}${tarjeta("kiosco", "Kiosco", "🏪", nivelKiosco)}${tarjeta("multi", "Tablas", "🗼", nivelMulti)}${tarjeta("pensar", "Acertijos", "🧠", nivelPensar)}
   </div>`;
 }
 
