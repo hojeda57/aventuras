@@ -1,0 +1,230 @@
+[
+  {
+    "id": "num-eleven",
+    "categoria": "numeros",
+    "en": "eleven",
+    "es": "once",
+    "emoji": null,
+    "color": null,
+    "orden": 11
+  },
+  {
+    "id": "num-twelve",
+    "categoria": "numeros",
+    "en": "twelve",
+    "es": "doce",
+    "emoji": null,
+    "color": null,
+    "orden": 12
+  },
+  {
+    "id": "num-thirteen",
+    "categoria": "numeros",
+    "en": "thirteen",
+    "es": "trece",
+    "emoji": null,
+    "color": null,
+    "orden": 13
+  },
+  {
+    "id": "num-fourteen",
+    "categoria": "numeros",
+    "en": "fourteen",
+    "es": "catorce",
+    "emoji": null,
+    "color": null,
+    "orden": 14
+  },
+  {
+    "id": "num-fifteen",
+    "categoria": "numeros",
+    "en": "fifteen",
+    "es": "quince",
+    "emoji": null,
+    "color": null,
+    "orden": 15
+  },
+  {
+    "id": "num-sixteen",
+    "categoria": "numeros",
+    "en": "sixteen",
+    "es": "dieciséis",
+    "emoji": null,
+    "color": null,
+    "orden": 16
+  },
+  {
+    "id": "num-seventeen",
+    "categoria": "numeros",
+    "en": "seventeen",
+    "es": "diecisiete",
+    "emoji": null,
+    "color": null,
+    "orden": 17
+  },
+  {
+    "id": "num-eighteen",
+    "categoria": "numeros",
+    "en": "eighteen",
+    "es": "dieciocho",
+    "emoji": null,
+    "color": null,
+    "orden": 18
+  },
+  {
+    "id": "num-nineteen",
+    "categoria": "numeros",
+    "en": "nineteen",
+    "es": "diecinueve",
+    "emoji": null,
+    "color": null,
+    "orden": 19
+  },
+  {
+    "id": "num-twenty",
+    "categoria": "numeros",
+    "en": "twenty",
+    "es": "veinte",
+    "emoji": null,
+    "color": null,
+    "orden": 20
+  },
+  {
+    "id": "col-grey",
+    "categoria": "colores",
+    "en": "grey",
+    "es": "gris",
+    "emoji": null,
+    "color": "#9e9e9e"
+  },
+  {
+    "id": "rop-t-shirt",
+    "categoria": "ropa",
+    "en": "T-shirt",
+    "es": "remera",
+    "emoji": "👕",
+    "color": null
+  },
+  {
+    "id": "rop-shirt",
+    "categoria": "ropa",
+    "en": "shirt",
+    "es": "camisa",
+    "emoji": "👔",
+    "color": null
+  },
+  {
+    "id": "rop-trousers",
+    "categoria": "ropa",
+    "en": "trousers",
+    "es": "pantalón",
+    "emoji": "👖",
+    "color": null
+  },
+  {
+    "id": "rop-shorts",
+    "categoria": "ropa",
+    "en": "shorts",
+    "es": "short",
+    "emoji": "🩳",
+    "color": null
+  },
+  {
+    "id": "rop-skirt",
+    "categoria": "ropa",
+    "en": "skirt",
+    "es": "pollera",
+    "emoji": null,
+    "color": null,
+    "imagen": "../assets/img/ingles/skirt.png"
+  },
+  {
+    "id": "rop-dress",
+    "categoria": "ropa",
+    "en": "dress",
+    "es": "vestido",
+    "emoji": "👗",
+    "color": null
+  },
+  {
+    "id": "rop-jumper",
+    "categoria": "ropa",
+    "en": "jumper",
+    "es": "buzo",
+    "emoji": null,
+    "color": null,
+    "imagen": "../assets/img/ingles/jumper.png"
+  },
+  {
+    "id": "rop-coat",
+    "categoria": "ropa",
+    "en": "coat",
+    "es": "abrigo",
+    "emoji": "🧥",
+    "color": null
+  },
+  {
+    "id": "rop-socks",
+    "categoria": "ropa",
+    "en": "socks",
+    "es": "medias",
+    "emoji": "🧦",
+    "color": null
+  },
+  {
+    "id": "rop-shoes",
+    "categoria": "ropa",
+    "en": "shoes",
+    "es": "zapatos",
+    "emoji": "👞",
+    "color": null
+  },
+  {
+    "id": "rop-trainers",
+    "categoria": "ropa",
+    "en": "trainers",
+    "es": "zapatillas",
+    "emoji": "👟",
+    "color": null
+  },
+  {
+    "id": "rop-boots",
+    "categoria": "ropa",
+    "en": "boots",
+    "es": "botas",
+    "emoji": "🥾",
+    "color": null
+  },
+  {
+    "id": "rop-hat",
+    "categoria": "ropa",
+    "en": "hat",
+    "es": "sombrero",
+    "emoji": "👒",
+    "color": null
+  },
+  {
+    "id": "rop-cap",
+    "categoria": "ropa",
+    "en": "cap",
+    "es": "gorra",
+    "emoji": "🧢",
+    "color": null
+  },
+  {
+    "id": "rop-scarf",
+    "categoria": "ropa",
+    "en": "scarf",
+    "es": "bufanda",
+    "emoji": "🧣",
+    "color": null
+  },
+  {
+    "id": "rop-gloves",
+    "categoria": "ropa",
+    "en": "gloves",
+    "es": "guantes",
+    "emoji": "🧤",
+    "color": null
+  }
+]

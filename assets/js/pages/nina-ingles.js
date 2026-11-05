@@ -9,6 +9,8 @@ import { sonido } from "../utils/sonidos.js";
 import { dibujoHTML } from "../components/dibujo.js";
 
 const POR_SESION = 6;
+const POR_SESION_EVAL = 8;   // los temas de la evaluación tienen más palabras: rondas un poco más largas
+const esEval = (cat) => !!CATEGORIAS_INGLES[cat]?.evaluacion;
 const NIVELES_INGLES = {
   1: { titulo: "Escuchar y mirar", emoji: "🎧", tipos: ["escuchar", "ver"], opciones: 3 },
   2: { titulo: "¿Cómo se dice?", emoji: "💬", tipos: ["escuchar", "ver", "traducir"], opciones: 4 },
@@ -17,7 +19,7 @@ const NIVELES_INGLES = {
 const FESTEJOS = ["globos", "cohetes", "estrellas", "confeti"];
 
 const e = { perfil: null, progreso: null, vocab: [], nivel: 1, categoria: null, sesion: [], idx: 0, ej: null,
-  intentos: 0, aciertos: 0, puntosInicio: 0, subio: false, ocupado: false };
+  intentos: 0, aciertos: 0, falladas: [], puntosInicio: 0, subio: false, ocupado: false };
 const nombre = () => e.perfil?.nombre || "";
 const azar = (lista) => lista[Math.floor(Math.random() * lista.length)];
 const mezclar = (lista) => [...lista].sort(() => Math.random() - 0.5);
@@ -36,6 +38,16 @@ function pantallaElegir() {
   detener();
   const desbloqueado = e.progreso.nivelIngles || 1;
   const contar = (cat) => e.vocab.filter((v) => v.categoria === cat).length;
+  const temas = Object.entries(CATEGORIAS_INGLES).filter(([k]) => contar(k));
+  const evaluacion = temas.filter(([k]) => esEval(k)), otros = temas.filter(([k]) => !esEval(k));
+  const dominadas = (cat) => e.vocab.filter((v) => v.categoria === cat && (v.dominada || 0) > 0).length;
+  const tarjetaTema = (k, c) => `
+        <button type="button" data-cat="${k}" class="btn-tactil rounded-[2rem] p-space-md ${c.fondo} shadow-[0_6px_0_0_rgba(0,0,0,0.12)] text-center hover:-translate-y-1 transition-transform">
+          <span class="block text-[64px] leading-none">${c.emoji}</span>
+          <span class="block font-headline-sm text-headline-sm mt-2">${c.titulo}</span>
+          <span class="block font-label-md text-label-md opacity-80">${c.en}</span>
+          ${c.evaluacion ? `<span class="block mt-1 font-label-md text-label-md">⭐ ${dominadas(k)} de ${contar(k)}</span>` : ""}
+        </button>`;
   $("#app").innerHTML = `
     <h1 class="font-headline-xl-mobile text-headline-xl-mobile sm:font-headline-xl sm:text-headline-xl text-center">🏰 Castillo del Inglés</h1>
     <p class="text-center font-body-lg text-body-lg text-on-surface-variant mb-space-lg">Let's play! ¿Qué querés aprender hoy?</p>
@@ -50,13 +62,22 @@ function pantallaElegir() {
       }).join("")}
     </div>
 
+    ${evaluacion.length ? `
+    <section class="rounded-[2.5rem] bg-[#fff8e1] border-4 border-[#fdd835] p-space-md sm:p-space-lg mb-space-lg">
+      <h2 class="font-headline-md text-headline-md text-center">📝 Para mi evaluación</h2>
+      <p class="text-center font-body-md text-body-md text-on-surface-variant mb-space-md">Jugá todas las veces que quieras. ¡Cada vez te va a salir mejor!</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-space-md">
+        ${evaluacion.map(([k, c]) => tarjetaTema(k, c)).join("")}
+        <button type="button" data-cat="evaluacion" class="btn-tactil rounded-[2rem] p-space-md bg-[#fdd835] shadow-[0_6px_0_0_#c6a700] text-center hover:-translate-y-1 transition-transform">
+          <span class="block text-[64px] leading-none">🏆</span>
+          <span class="block font-headline-sm text-headline-sm mt-2">Repaso de todo</span>
+          <span class="block font-label-md text-label-md opacity-80">Like the test!</span>
+        </button>
+      </div>
+    </section>
+    <h2 class="font-headline-md text-headline-md text-center mb-space-md">🌈 Más para aprender</h2>` : ""}
     <div class="grid grid-cols-2 md:grid-cols-4 gap-space-md">
-      ${Object.entries(CATEGORIAS_INGLES).filter(([k]) => contar(k)).map(([k, c]) => `
-        <button type="button" data-cat="${k}" class="btn-tactil rounded-[2rem] p-space-md ${c.fondo} shadow-[0_6px_0_0_rgba(0,0,0,0.12)] text-center hover:-translate-y-1 transition-transform">
-          <span class="block text-[64px] leading-none">${c.emoji}</span>
-          <span class="block font-headline-sm text-headline-sm mt-2">${c.titulo}</span>
-          <span class="block font-label-md text-label-md opacity-80">${c.en}</span>
-        </button>`).join("")}
+      ${otros.map(([k, c]) => tarjetaTema(k, c)).join("")}
       <button type="button" data-cat="mezcla" class="btn-tactil rounded-[2rem] p-space-md bg-white shadow-[0_6px_0_0_rgba(0,0,0,0.08)] text-center hover:-translate-y-1 transition-transform">
         <span class="block text-[64px] leading-none">🎲</span>
         <span class="block font-headline-sm text-headline-sm mt-2">Todo mezclado</span>
@@ -69,13 +90,16 @@ function pantallaElegir() {
   $$("[data-cat]").forEach((b) => b.addEventListener("click", () => empezar(b.dataset.cat)));
 }
 
-async function empezar(categoria) {
+async function empezar(categoria, soloIds = null) {
   try { e.vocab = await api.listar("ingles"); } catch (err) { toast(err.message, "error"); return; }
   e.categoria = categoria;
-  const pool = e.vocab.filter((v) => categoria === "mezcla" || v.categoria === categoria)
-    .sort((a, b) => (a.dominada || 0) - (b.dominada || 0) || Math.random() - 0.5);
+  const entra = (v) => soloIds ? soloIds.includes(v.id)
+    : categoria === "mezcla" || (categoria === "evaluacion" ? esEval(v.categoria) : v.categoria === categoria);
+  // primero las que menos sabe, así cada ronda repasa palabras distintas
+  const pool = e.vocab.filter(entra).sort((a, b) => (a.dominada || 0) - (b.dominada || 0) || Math.random() - 0.5);
   if (!pool.length) { toast("Todavía no hay palabras en este tema.", "error"); return; }
-  Object.assign(e, { sesion: pool.slice(0, POR_SESION), idx: 0, aciertos: 0, puntosInicio: e.progreso.puntos, subio: false });
+  const cuantas = soloIds ? soloIds.length : (categoria === "evaluacion" ? 10 : esEval(categoria) ? POR_SESION_EVAL : POR_SESION);
+  Object.assign(e, { sesion: mezclar(pool.slice(0, cuantas)), idx: 0, aciertos: 0, falladas: [], puntosInicio: e.progreso.puntos, subio: false });
   pantallaJuego();
 }
 
@@ -83,7 +107,7 @@ async function empezar(categoria) {
 function visual(v, grande = true) {
   if (v.categoria === "numeros") {
     return `<span class="block font-bold leading-none text-secondary ${grande ? "text-[110px]" : "text-[64px]"}">${v.orden}</span>
-      ${grande ? `<span class="block text-[26px] mt-1">${"⭐".repeat(v.orden)}</span>` : ""}`;
+      ${grande ? `<span class="block text-[26px] leading-tight mt-1">${"⭐".repeat(Math.min(v.orden, 10))}${v.orden > 10 ? `<br>${"⭐".repeat(v.orden - 10)}` : ""}</span>` : ""}`;
   }
   if (v.color) {
     const t = grande ? 150 : 84;
@@ -234,6 +258,7 @@ async function alTocar(ev) {
 async function fallo() {
   e.ocupado = true;
   e.intentos++;
+  if (!e.falladas.includes(e.ej.v.id)) e.falladas.push(e.ej.v.id);   // aunque después acierte, conviene repasarla
   sonido.error();
   const ej = e.ej, max = ej.tipo === "completar" ? 3 : 2;
   if (e.intentos >= max) {
@@ -291,13 +316,20 @@ async function pantallaFin() {
       ${nuevas.length ? `<div class="mt-space-lg p-space-md rounded-[2rem] bg-surface-container-low">
         <p class="font-headline-sm text-headline-sm">¡Figurita nueva en el cofre!</p>
         <p class="text-[72px] leading-tight">${nuevas.map((f) => f.emoji).join(" ")}</p></div>` : ""}
+      ${e.falladas.length ? `<div class="mt-space-lg p-space-md rounded-[2rem] bg-[#fff8e1]">
+        <p class="font-headline-sm text-headline-sm">Para practicar un poquito más:</p>
+        <p class="font-body-lg text-body-lg mt-1">${e.falladas.map((id) => e.vocab.find((v) => v.id === id)).filter(Boolean).map((v) => `<b>${esc(v.en)}</b> = ${esc(v.es)}`).join(" · ")}</p>
+        <button id="repasar" type="button" class="btn-tactil mt-space-md px-7 py-4 rounded-full bg-[#fdd835] font-headline-sm text-headline-sm shadow-[0_4px_0_0_#c6a700]">🎯 Practicar las que me costaron</button>
+      </div>` : `<p class="mt-space-md font-headline-sm text-headline-sm">🌟 ¡Todas bien al primer intento!</p>`}
       <div class="flex flex-col sm:flex-row justify-center gap-space-md mt-space-lg">
         <button id="otra" type="button" class="btn-tactil px-7 py-4 rounded-full bg-[#8b5cf6] text-white font-headline-sm text-headline-sm shadow-[0_4px_0_0_#5b21b6]">🔁 Otra vez</button>
         <a href="ingles.html" class="btn-tactil px-7 py-4 rounded-full bg-[#ede9fe] text-[#4c1d95] font-headline-sm text-headline-sm shadow-[0_4px_0_0_#c4b5fd]">🎨 Otro tema</a>
         <a href="index.html" class="btn-tactil px-7 py-4 rounded-full bg-white border-2 border-surface-container-high font-headline-sm text-headline-sm">🏠 Mapa</a>
       </div>
     </section>`;
+  const falladas = [...e.falladas];
   $("#otra").addEventListener("click", () => empezar(e.categoria));
+  $("#repasar")?.addEventListener("click", () => empezar(e.categoria, falladas));
   if (e.subio) {
     sonido.nivel();
     hablar(`¡Felicitaciones, ${nombre()}! ¡Subiste al nivel ${e.progreso.nivelIngles} de inglés!`);

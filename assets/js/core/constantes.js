@@ -95,8 +95,10 @@ export const frase = (lista, nombre) => g(lista[Math.floor(Math.random() * lista
 
 // ---------------------------------------------------------------- Inglés
 export const CATEGORIAS_INGLES = {
-  colores:  { titulo: "Colores",       en: "Colors",          emoji: "🎨", fondo: "bg-[linear-gradient(160deg,#ffdad6,#f48fb1)]" },
-  numeros:  { titulo: "Números",       en: "Numbers",         emoji: "🔢", fondo: "bg-[linear-gradient(160deg,#c9e6ff,#89ceff)]" },
+  // evaluacion: true → aparecen primero, en "Para mi evaluación"
+  ropa:     { titulo: "Ropa",          en: "Clothes",         emoji: "👕", evaluacion: true, fondo: "bg-[linear-gradient(160deg,#d1fae5,#5eead4)]" },
+  colores:  { titulo: "Colores",       en: "Colours",         emoji: "🎨", evaluacion: true, fondo: "bg-[linear-gradient(160deg,#ffdad6,#f48fb1)]" },
+  numeros:  { titulo: "Números 1 al 20", en: "Numbers 1-20",  emoji: "🔢", evaluacion: true, fondo: "bg-[linear-gradient(160deg,#c9e6ff,#89ceff)]" },
   animales: { titulo: "Animales",      en: "Animals",         emoji: "🦁", fondo: "bg-[linear-gradient(160deg,#ffddb8,#ffb95f)]" },
   cuerpo:   { titulo: "Mi cuerpo",     en: "My body",         emoji: "✋", fondo: "bg-[linear-gradient(160deg,#6ffbbe,#4edea3)]" },
   dias:     { titulo: "Días",          en: "Days of the week", emoji: "📅", fondo: "bg-[linear-gradient(160deg,#ede9fe,#c4b5fd)]" },

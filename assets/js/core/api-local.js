@@ -5,7 +5,7 @@ import { verifyAsync } from "../vendor/noble-ed25519.js";
 import { CLAVE_PUBLICA } from "../clave_publica.js";
 
 const RAIZ = new URL("../../../", import.meta.url); // carpeta raíz de la app (donde está index.html)
-const VERSION = "1.4.0";
+const VERSION = "1.5.0";
 const COLECCIONES = ["lectura", "matematicas", "ingles", "billetes", "productos", "tablas", "juegos", "palabras"];
 const AREAS = { lectura: "lectura", mate: "matematicas", ingles: "ingles", kiosco: "productos", multi: "tablas", pensar: "juegos" };
 const CONTADOR = { lectura: ["lectura", "dominada"], matematicas: ["mate", "superado"], ingles: ["ingles", "dominada"], productos: ["kiosco", "dominada"], tablas: ["multi", "dominada"], juegos: ["pensar", "dominada"] };
@@ -46,6 +46,18 @@ const listo = (async () => {
     }
     await kv.set("perfiles", ids);
   }
+  // Palabras/ejercicios nuevos de esta versión: se suman una sola vez, sin pisar lo que ya hay
+  const ofrecidos = (await kv.get("ofrecidos")) || {};
+  for (const col of indice.extra || []) {
+    const actuales = (await kv.get(`col:${col}`)) || [];
+    const idsActuales = new Set(actuales.map((i) => i.id));
+    const ya = new Set(ofrecidos[col] || idsActuales);
+    const nuevos = corregirRutas(await cargarJSON(`semilla/extra/${col}.json`, []));
+    const agregar = nuevos.filter((i) => !ya.has(i.id) && !idsActuales.has(i.id));
+    if (agregar.length) await kv.set(`col:${col}`, [...actuales, ...agregar]);
+    ofrecidos[col] = [...new Set([...ya, ...idsActuales, ...nuevos.map((i) => i.id)])];
+  }
+  await kv.set("ofrecidos", ofrecidos);
   return edicion;
 })();
 
