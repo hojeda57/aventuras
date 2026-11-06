@@ -88,7 +88,7 @@ export const ANIMOS_MATE = [
 const GENERO = { g: "a" };
 export const fijarGenero = (g) => { GENERO.g = g === "o" ? "o" : "a"; };
 const FORMAS = { un: ["una", "un"], genia: ["genia", "genio"], campeona: ["campeona", "campeón"], lectora: ["lectora", "lector"],
-  juntas: ["juntas", "juntos"], bienvenida: ["bienvenida", "bienvenido"], tranquila: ["tranquila", "tranquilo"], gran: ["gran", "gran"], pensadora: ["pensadora", "pensador"] };
+  juntas: ["juntas", "juntos"], bienvenida: ["bienvenida", "bienvenido"], tranquila: ["tranquila", "tranquilo"], gran: ["gran", "gran"], pensadora: ["pensadora", "pensador"], lista: ["lista", "listo"] };
 /** Adapta {genia}, {juntas}, etc. al género del jugador. */
 export const g = (texto) => texto.replace(/\{(\w+)\}/g, (m, k) => (FORMAS[k] ? FORMAS[k][GENERO.g === "o" ? 1 : 0] : m));
 export const frase = (lista, nombre) => g(lista[Math.floor(Math.random() * lista.length)]).replaceAll("{n}", nombre);
@@ -104,6 +104,15 @@ export const CATEGORIAS_INGLES = {
   dias:     { titulo: "Días",          en: "Days of the week", emoji: "📅", fondo: "bg-[linear-gradient(160deg,#ede9fe,#c4b5fd)]" },
   palabras: { titulo: "Palabras",      en: "Words",           emoji: "👋", fondo: "bg-[linear-gradient(160deg,#fff3c4,#fdd835)]" },
 };
+// Camino de aprendizaje de cada tema de la evaluación: de lo más fácil a lo más difícil
+export const PASOS_CAMINO = [
+  { id: "conocer",  titulo: "Conocer",     emoji: "👀", desc: "Mirá, escuchá y repetí cada palabra" },
+  { id: "escuchar", titulo: "Escuchar",    emoji: "🎧", desc: "Escuchá y tocá el dibujo",            tipos: ["escuchar"], preguntas: 8, opciones: 3 },
+  { id: "leer",     titulo: "Leer",        emoji: "📖", desc: "Leé la palabra y tocá el dibujo",     tipos: ["leer"], preguntas: 8, opciones: 3 },
+  { id: "escribir", titulo: "Escribir",    emoji: "✏️", desc: "Completá las letras que faltan",      tipos: ["escribir"], preguntas: 6 },
+  { id: "prueba",   titulo: "Mini prueba", emoji: "🏅", desc: "¡Todo junto para ganar la medalla!", tipos: ["escuchar", "leer", "escribir", "traducir"], preguntas: 10, opciones: 4 },
+];
+export const PRUEBA_FINAL = { id: "final", titulo: "Prueba final", emoji: "🏆", tipos: ["escuchar", "leer", "escribir", "traducir"], preguntas: 12, opciones: 4 };
 export const ELOGIOS_INGLES = ["Great job", "Very good", "Excellent", "Well done", "Amazing", "Super"];
 
 // ---------------------------------------------------------------- Kiosco

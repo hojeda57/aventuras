@@ -1,7 +1,7 @@
 import { api } from "../core/api.js";
 import { guardiaNina } from "../components/nina-guardia.js";
 import { $, esc, toast } from "../core/dom.js";
-import { ACCESORIOS, CARAS_AVATAR, FIGURITAS } from "../core/constantes.js";
+import { ACCESORIOS, CARAS_AVATAR, CATEGORIAS_INGLES, FIGURITAS } from "../core/constantes.js";
 import { avatarHTML, renderBarra } from "../components/nina-barra.js";
 import { hablar } from "../utils/audio.js";
 import { sonido } from "../utils/sonidos.js";
@@ -78,7 +78,19 @@ function diplomas() {
         : `<p class="font-label-md text-label-md text-on-surface-variant">${avance} de ${meta} aciertos</p>`}
     </div>`;
   }).join("");
-  return `<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
+  const camino = e.perfil.caminoIngles || {};
+  const temas = Object.entries(CATEGORIAS_INGLES).filter(([, c]) => c.evaluacion);
+  const medalla = (gano, emoji, titulo, detalle) => `<div class="rounded-[2rem] p-space-md text-center border-4 ${gano ? "border-[#fdd835] bg-[linear-gradient(160deg,#fff,#fff8e1)]" : "border-dashed border-surface-container-high bg-white/60"}">
+      <p class="text-[56px] leading-none ${gano ? "" : "grayscale opacity-30"}">${emoji}</p>
+      <p class="font-headline-sm text-headline-sm mt-1">${titulo}</p>
+      <p class="font-label-md text-label-md text-on-surface-variant">${detalle}</p></div>`;
+  return `<h2 class="font-headline-md text-headline-md text-center mb-space-md">📝 Medallas de inglés</h2>
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-space-md mb-space-xl">
+    ${temas.map(([k, c]) => medalla(camino[k]?.prueba, camino[k]?.prueba ? "🏅" : c.emoji, c.titulo, camino[k]?.prueba ? "⭐".repeat(camino[k].prueba) : "Terminá el camino")).join("")}
+    ${medalla(camino.final?.prueba, "🏆", "Prueba final", camino.final?.prueba ? "⭐".repeat(camino.final.prueba) : "Con las 3 medallas")}
+  </div>
+  <h2 class="font-headline-md text-headline-md text-center mb-space-md">📜 Diplomas</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
     ${tarjeta("lectura", "Lectura", "📖", nivelLectura)}${tarjeta("mate", "Números", "🔢", nivelMate)}${tarjeta("ingles", "Inglés", "🏰", nivelIngles)}${tarjeta("kiosco", "Kiosco", "🏪", nivelKiosco)}${tarjeta("multi", "Tablas", "🗼", nivelMulti)}${tarjeta("pensar", "Acertijos", "🧠", nivelPensar)}
   </div>`;
 }
