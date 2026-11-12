@@ -112,6 +112,13 @@ export const PASOS_CAMINO = [
   { id: "escribir", titulo: "Escribir",    emoji: "✏️", desc: "Completá las letras que faltan",      tipos: ["escribir"], preguntas: 6 },
   { id: "prueba",   titulo: "Mini prueba", emoji: "🏅", desc: "¡Todo junto para ganar la medalla!", tipos: ["escuchar", "leer", "escribir", "traducir"], preguntas: 10, opciones: 4 },
 ];
+// Juegos para escribir en inglés (con teclado de letras grandes)
+export const JUEGOS_ESCRIBIR = [
+  { id: "contar", grupo: "escribir", titulo: "Contar y escribir", emoji: "🧮", desc: "¿Cuántas hay, de qué color y qué prenda?", tipos: ["contar"], preguntas: 5, cat: "ropa" },
+  { id: "prenda", grupo: "escribir", titulo: "Escribir la prenda", emoji: "👕", desc: "Mirá el dibujo y escribí su nombre", tipos: ["eprenda"], preguntas: 8, cat: "ropa" },
+  { id: "color",  grupo: "escribir", titulo: "Escribir el color", emoji: "🎨", desc: "Mirá el color y escribilo", tipos: ["ecolor"], preguntas: 8, cat: "colores" },
+  { id: "numero", grupo: "escribir", titulo: "Escribir los números", emoji: "🔢", desc: "Contá las prendas y escribí el número", tipos: ["enumero"], preguntas: 8, cat: "numeros" },
+];
 export const PRUEBA_FINAL = { id: "final", titulo: "Prueba final", emoji: "🏆", tipos: ["escuchar", "leer", "escribir", "traducir"], preguntas: 12, opciones: 4 };
 export const ELOGIOS_INGLES = ["Great job", "Very good", "Excellent", "Well done", "Amazing", "Super"];
 

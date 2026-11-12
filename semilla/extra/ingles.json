@@ -92,42 +92,56 @@
   {
     "id": "col-grey",
     "categoria": "colores",
-    "en": "grey",
+    "en": "gray",
     "es": "gris",
     "emoji": null,
     "color": "#9e9e9e"
+  },
+  {
+    "id": "col-light-blue",
+    "categoria": "colores",
+    "en": "light-blue",
+    "es": "celeste",
+    "emoji": null,
+    "color": "#81d4fa"
   },
   {
     "id": "rop-t-shirt",
     "categoria": "ropa",
     "en": "T-shirt",
     "es": "remera",
-    "emoji": "👕",
-    "color": null
+    "emoji": null,
+    "color": null,
+    "dibujo": "tshirt",
+    "plural": "T-shirts"
   },
   {
     "id": "rop-shirt",
     "categoria": "ropa",
     "en": "shirt",
     "es": "camisa",
-    "emoji": "👔",
-    "color": null
+    "emoji": null,
+    "color": null,
+    "dibujo": "shirt",
+    "plural": "shirts"
   },
   {
     "id": "rop-trousers",
     "categoria": "ropa",
-    "en": "trousers",
+    "en": "pants",
     "es": "pantalón",
-    "emoji": "👖",
-    "color": null
+    "emoji": null,
+    "color": null,
+    "dibujo": "pants"
   },
   {
     "id": "rop-shorts",
     "categoria": "ropa",
     "en": "shorts",
     "es": "short",
-    "emoji": "🩳",
-    "color": null
+    "emoji": null,
+    "color": null,
+    "dibujo": "shorts"
   },
   {
     "id": "rop-skirt",
@@ -136,15 +150,18 @@
     "es": "pollera",
     "emoji": null,
     "color": null,
-    "imagen": "../assets/img/ingles/skirt.png"
+    "dibujo": "skirt",
+    "plural": "skirts"
   },
   {
     "id": "rop-dress",
     "categoria": "ropa",
     "en": "dress",
     "es": "vestido",
-    "emoji": "👗",
-    "color": null
+    "emoji": null,
+    "color": null,
+    "dibujo": "dress",
+    "plural": "dresses"
   },
   {
     "id": "rop-jumper",
@@ -153,78 +170,149 @@
     "es": "buzo",
     "emoji": null,
     "color": null,
-    "imagen": "../assets/img/ingles/jumper.png"
+    "dibujo": "sweater",
+    "plural": "jumpers"
+  },
+  {
+    "id": "rop-sweater",
+    "categoria": "ropa",
+    "en": "sweater",
+    "es": "suéter",
+    "emoji": null,
+    "color": null,
+    "dibujo": "sweater",
+    "plural": "sweaters"
+  },
+  {
+    "id": "rop-jacket",
+    "categoria": "ropa",
+    "en": "jacket",
+    "es": "campera",
+    "emoji": null,
+    "color": null,
+    "dibujo": "jacket",
+    "plural": "jackets"
   },
   {
     "id": "rop-coat",
     "categoria": "ropa",
     "en": "coat",
     "es": "abrigo",
-    "emoji": "🧥",
-    "color": null
+    "emoji": null,
+    "color": null,
+    "dibujo": "coat",
+    "plural": "coats"
+  },
+  {
+    "id": "rop-suit",
+    "categoria": "ropa",
+    "en": "suit",
+    "es": "traje",
+    "emoji": null,
+    "color": null,
+    "dibujo": "suit",
+    "plural": "suits"
   },
   {
     "id": "rop-socks",
     "categoria": "ropa",
     "en": "socks",
     "es": "medias",
-    "emoji": "🧦",
-    "color": null
+    "emoji": null,
+    "color": null,
+    "dibujo": "socks"
   },
   {
     "id": "rop-shoes",
     "categoria": "ropa",
     "en": "shoes",
     "es": "zapatos",
-    "emoji": "👞",
-    "color": null
-  },
-  {
-    "id": "rop-trainers",
-    "categoria": "ropa",
-    "en": "trainers",
-    "es": "zapatillas",
-    "emoji": "👟",
-    "color": null
+    "emoji": null,
+    "color": null,
+    "dibujo": "shoes"
   },
   {
     "id": "rop-boots",
     "categoria": "ropa",
     "en": "boots",
     "es": "botas",
-    "emoji": "🥾",
-    "color": null
+    "emoji": null,
+    "color": null,
+    "dibujo": "boots"
+  },
+  {
+    "id": "rop-sandals",
+    "categoria": "ropa",
+    "en": "sandals",
+    "es": "sandalias",
+    "emoji": null,
+    "color": null,
+    "dibujo": "sandals"
+  },
+  {
+    "id": "rop-flip-flops",
+    "categoria": "ropa",
+    "en": "flip-flops",
+    "es": "ojotas",
+    "emoji": null,
+    "color": null,
+    "dibujo": "flipflops"
   },
   {
     "id": "rop-hat",
     "categoria": "ropa",
     "en": "hat",
     "es": "sombrero",
-    "emoji": "👒",
-    "color": null
+    "emoji": null,
+    "color": null,
+    "dibujo": "hat",
+    "plural": "hats"
   },
   {
     "id": "rop-cap",
     "categoria": "ropa",
     "en": "cap",
     "es": "gorra",
-    "emoji": "🧢",
-    "color": null
+    "emoji": null,
+    "color": null,
+    "dibujo": "cap",
+    "plural": "caps"
   },
   {
     "id": "rop-scarf",
     "categoria": "ropa",
     "en": "scarf",
     "es": "bufanda",
-    "emoji": "🧣",
-    "color": null
+    "emoji": null,
+    "color": null,
+    "dibujo": "scarf",
+    "plural": "scarves"
   },
   {
     "id": "rop-gloves",
     "categoria": "ropa",
     "en": "gloves",
     "es": "guantes",
-    "emoji": "🧤",
-    "color": null
+    "emoji": null,
+    "color": null,
+    "dibujo": "gloves"
+  },
+  {
+    "id": "rop-glasses",
+    "categoria": "ropa",
+    "en": "glasses",
+    "es": "anteojos",
+    "emoji": null,
+    "color": null,
+    "dibujo": "glasses"
+  },
+  {
+    "id": "rop-sunglasses",
+    "categoria": "ropa",
+    "en": "sunglasses",
+    "es": "anteojos de sol",
+    "emoji": null,
+    "color": null,
+    "dibujo": "sunglasses"
   }
 ]

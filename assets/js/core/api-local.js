@@ -5,7 +5,7 @@ import { verifyAsync } from "../vendor/noble-ed25519.js";
 import { CLAVE_PUBLICA } from "../clave_publica.js";
 
 const RAIZ = new URL("../../../", import.meta.url); // carpeta raíz de la app (donde está index.html)
-const VERSION = "1.5.0";
+const VERSION = "1.6.0";
 const COLECCIONES = ["lectura", "matematicas", "ingles", "billetes", "productos", "tablas", "juegos", "palabras"];
 const AREAS = { lectura: "lectura", mate: "matematicas", ingles: "ingles", kiosco: "productos", multi: "tablas", pensar: "juegos" };
 const CONTADOR = { lectura: ["lectura", "dominada"], matematicas: ["mate", "superado"], ingles: ["ingles", "dominada"], productos: ["kiosco", "dominada"], tablas: ["multi", "dominada"], juegos: ["pensar", "dominada"] };
@@ -56,6 +56,21 @@ const listo = (async () => {
     const agregar = nuevos.filter((i) => !ya.has(i.id) && !idsActuales.has(i.id));
     if (agregar.length) await kv.set(`col:${col}`, [...actuales, ...agregar]);
     ofrecidos[col] = [...new Set([...ya, ...idsActuales, ...nuevos.map((i) => i.id)])];
+  }
+  // Arreglos puntuales de contenido: una sola vez y solo si la familia no cambió ese elemento
+  if (indice.correcciones) {
+    const hechas = new Set(ofrecidos._correcciones || []);
+    for (const c of await cargarJSON("semilla/extra/_correcciones.json", [])) {
+      if (hechas.has(c.id)) continue;
+      hechas.add(c.id);
+      const items = await kv.get(`col:${c.col}`);
+      const it = items?.find((i) => i.id === c.item);
+      if (!it || Object.entries(c.si || {}).some(([k, v]) => (it[k] ?? null) !== v)) continue;
+      if (c.borrar) items.splice(items.indexOf(it), 1);
+      else Object.assign(it, c.poner || {});
+      await kv.set(`col:${c.col}`, items);
+    }
+    ofrecidos._correcciones = [...hechas];
   }
   await kv.set("ofrecidos", ofrecidos);
   return edicion;

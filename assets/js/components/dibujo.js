@@ -1,5 +1,6 @@
 import { api } from "../core/api.js";
 import { esc, toast } from "../core/dom.js";
+import { hayDibujo, prendaSVG } from "./prendas.js";
 
 // Paleta de emojis frecuentes (en Windows escribir emojis es incómodo; también sirve Win + .)
 const PALETA = [
@@ -10,11 +11,15 @@ const PALETA = [
 
 /** Muestra un dibujo: la imagen subida si hay, si no el emoji. */
 export function dibujoHTML(item, { clases = "text-[48px]", tamImg = "w-14 h-14", defecto = "🔤" } = {}) {
+  if (usaDibujoPrenda(item)) return prendaSVG(item.dibujo, "#90caf9", 64, esc(item.en || ""));
   const emoji = `<span class="leading-none ${clases}">${esc(item.emoji || defecto)}</span>`;
   if (!item.imagen) return emoji;
   return `<img src="${esc(item.imagen)}" alt="${esc(item.nombre || item.en || "")}" class="${tamImg} object-contain rounded-[0.75rem]"
     onerror="this.nextElementSibling.hidden=false;this.remove()"><span hidden>${emoji}</span>`;
 }
+
+/** Las prendas de inglés traen su dibujo; una foto subida por la familia tiene prioridad. */
+export const usaDibujoPrenda = (item) => !!item.dibujo && hayDibujo(item.dibujo) && !String(item.imagen || "").includes("uploads");
 
 /** Campo para elegir el dibujo: emoji escrito, paleta o imagen subida. Va dentro de un <form>. */
 export function selectorDibujoHTML({ emoji = "", imagen = "" } = {}, placeholder = "🐰") {

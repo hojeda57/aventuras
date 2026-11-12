@@ -1,0 +1,223 @@
+[
+  {
+    "id": "2026-11-mesa",
+    "col": "lectura",
+    "item": "p13",
+    "si": {
+      "texto": "MESA",
+      "emoji": "🪑"
+    },
+    "poner": {
+      "emoji": "🍽️",
+      "imagen": "../assets/img/lectura/mesa.svg"
+    }
+  },
+  {
+    "id": "2026-11-zapato",
+    "col": "lectura",
+    "item": "p23",
+    "si": {
+      "texto": "ZAPATO",
+      "emoji": "👟"
+    },
+    "poner": {
+      "emoji": "👞"
+    }
+  },
+  {
+    "id": "2026-11-gray",
+    "col": "ingles",
+    "item": "col-grey",
+    "si": {
+      "en": "grey"
+    },
+    "poner": {
+      "en": "gray"
+    }
+  },
+  {
+    "id": "2026-11-pants",
+    "col": "ingles",
+    "item": "rop-trousers",
+    "si": {
+      "en": "trousers"
+    },
+    "poner": {
+      "en": "pants",
+      "dibujo": "pants",
+      "imagen": null
+    }
+  },
+  {
+    "id": "2026-11-trainers",
+    "col": "ingles",
+    "item": "rop-trainers",
+    "si": {
+      "en": "trainers"
+    },
+    "borrar": true
+  },
+  {
+    "id": "2026-11-dibujo-rop-t-shirt",
+    "col": "ingles",
+    "item": "rop-t-shirt",
+    "si": {
+      "en": "T-shirt"
+    },
+    "poner": {
+      "dibujo": "tshirt",
+      "plural": "T-shirts"
+    }
+  },
+  {
+    "id": "2026-11-dibujo-rop-shirt",
+    "col": "ingles",
+    "item": "rop-shirt",
+    "si": {
+      "en": "shirt"
+    },
+    "poner": {
+      "dibujo": "shirt",
+      "plural": "shirts"
+    }
+  },
+  {
+    "id": "2026-11-dibujo-rop-shorts",
+    "col": "ingles",
+    "item": "rop-shorts",
+    "si": {
+      "en": "shorts"
+    },
+    "poner": {
+      "dibujo": "shorts"
+    }
+  },
+  {
+    "id": "2026-11-dibujo-rop-skirt",
+    "col": "ingles",
+    "item": "rop-skirt",
+    "si": {
+      "en": "skirt"
+    },
+    "poner": {
+      "dibujo": "skirt",
+      "plural": "skirts"
+    }
+  },
+  {
+    "id": "2026-11-dibujo-rop-dress",
+    "col": "ingles",
+    "item": "rop-dress",
+    "si": {
+      "en": "dress"
+    },
+    "poner": {
+      "dibujo": "dress",
+      "plural": "dresses"
+    }
+  },
+  {
+    "id": "2026-11-dibujo-rop-jumper",
+    "col": "ingles",
+    "item": "rop-jumper",
+    "si": {
+      "en": "jumper"
+    },
+    "poner": {
+      "dibujo": "sweater",
+      "plural": "jumpers"
+    }
+  },
+  {
+    "id": "2026-11-dibujo-rop-coat",
+    "col": "ingles",
+    "item": "rop-coat",
+    "si": {
+      "en": "coat"
+    },
+    "poner": {
+      "dibujo": "coat",
+      "plural": "coats"
+    }
+  },
+  {
+    "id": "2026-11-dibujo-rop-socks",
+    "col": "ingles",
+    "item": "rop-socks",
+    "si": {
+      "en": "socks"
+    },
+    "poner": {
+      "dibujo": "socks"
+    }
+  },
+  {
+    "id": "2026-11-dibujo-rop-shoes",
+    "col": "ingles",
+    "item": "rop-shoes",
+    "si": {
+      "en": "shoes"
+    },
+    "poner": {
+      "dibujo": "shoes"
+    }
+  },
+  {
+    "id": "2026-11-dibujo-rop-boots",
+    "col": "ingles",
+    "item": "rop-boots",
+    "si": {
+      "en": "boots"
+    },
+    "poner": {
+      "dibujo": "boots"
+    }
+  },
+  {
+    "id": "2026-11-dibujo-rop-hat",
+    "col": "ingles",
+    "item": "rop-hat",
+    "si": {
+      "en": "hat"
+    },
+    "poner": {
+      "dibujo": "hat",
+      "plural": "hats"
+    }
+  },
+  {
+    "id": "2026-11-dibujo-rop-cap",
+    "col": "ingles",
+    "item": "rop-cap",
+    "si": {
+      "en": "cap"
+    },
+    "poner": {
+      "dibujo": "cap",
+      "plural": "caps"
+    }
+  },
+  {
+    "id": "2026-11-dibujo-rop-scarf",
+    "col": "ingles",
+    "item": "rop-scarf",
+    "si": {
+      "en": "scarf"
+    },
+    "poner": {
+      "dibujo": "scarf",
+      "plural": "scarves"
+    }
+  },
+  {
+    "id": "2026-11-dibujo-rop-gloves",
+    "col": "ingles",
+    "item": "rop-gloves",
+    "si": {
+      "en": "gloves"
+    },
+    "poner": {
+      "dibujo": "gloves"
+    }
+  }
+]
